@@ -1,0 +1,3 @@
+"""
+PocketPilot core package.
+"""
