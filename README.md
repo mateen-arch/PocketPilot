@@ -100,14 +100,29 @@ pip install -r requirements.txt
 ```
 
 ### Run the App
-Run locally from the project root using Python 3.12.10:
+Run locally from the project root using Python 3.12 (tested on 3.12.10):
 ```bash
 streamlit run streamlit_app.py
 ```
 
+The application provides five interactive modules in the sidebar navigation:
+- **Home**: Project overview, system status, dataset summaries, limitations, and prototype disclaimer.
+- **Daily Phone Planner**: Forecast-driven resource management, battery survival estimation, 3 risk gauges, and minimal intervention plans.
+- **Will I Make It**: Goal-based battery survival estimation with remedial what-if scenario recommendations.
+- **Digital Use Profile**: Retrospective observed usage profiling (manual entry or multi-day CSV history) and centroid comparisons.
+- **Model Evaluation**: Read-only empirical benchmark tables, residual analysis, SHAP attribution stability, and automated test audits.
+
 ### Deploying to Streamlit Community Cloud
-To deploy PocketPilot to Streamlit Community Cloud:
-- **Repository**: Your GitHub repository (`PocketPilot`)
-- **Branch**: `main`
-- **Main file path**: `streamlit_app.py`
-- **Advanced settings**: Select Python version `3.12` (matching tested 3.12.10 environment).
+Checklist for deploying the application to Streamlit Community Cloud:
+- [ ] Push local commits to your remote GitHub repository
+- [ ] Select Repository: `PocketPilot` (or your repository name)
+- [ ] Branch: `main`
+- [ ] Main file path: `streamlit_app.py`
+- [ ] In Advanced settings: select Python version `3.12`
+
+### Known Limitations
+- simulated data
+- usage columns highly correlated so SHAP attributions describe the model and not causes
+- Wi-Fi shift and power saving are assumptions
+- survival assumes drain spread over 16 waking hours
+- the app is not an operating-system battery monitor
