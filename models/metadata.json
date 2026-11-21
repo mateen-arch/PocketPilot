@@ -109,5 +109,55 @@
     "sklearn_version": "1.9.1",
     "random_seed": 42,
     "training_date": "2026-11-21T15:27:46.396639+00:00"
+  },
+  "risk": {
+    "battery": {
+      "variant": "relative",
+      "rho": 0.24982905197563582,
+      "n_residuals": 560,
+      "residual_quantiles": {
+        "q05": -0.2774660117754391,
+        "q10": -0.21686416170361977,
+        "q50": -0.005022336809160164,
+        "q90": 0.1716293431452866,
+        "q95": 0.23535681975599154
+      },
+      "method_description": "Empirical residual sampling using 5-fold cross-validated out-of-fold predictions on the training partition.",
+      "sklearn_version": "1.9.1",
+      "seed": 42,
+      "training_date": "2026-11-21T15:36:21.199287+00:00"
+    },
+    "data": {
+      "variant": "relative",
+      "rho": 0.5454934941939047,
+      "n_residuals": 560,
+      "residual_quantiles": {
+        "q05": -0.31312159586231547,
+        "q10": -0.2604373607421139,
+        "q50": 0.001532660777677732,
+        "q90": 0.2763534704180774,
+        "q95": 0.3327449615117223
+      },
+      "method_description": "Empirical residual sampling using 5-fold cross-validated out-of-fold predictions on the training partition.",
+      "sklearn_version": "1.9.1",
+      "seed": 42,
+      "training_date": "2026-11-21T15:36:23.928965+00:00"
+    },
+    "screen_time": {
+      "variant": "relative",
+      "rho": 0.415754035492355,
+      "n_residuals": 560,
+      "residual_quantiles": {
+        "q05": -0.2796834591219443,
+        "q10": -0.20316311949880855,
+        "q50": -0.0013546959049870687,
+        "q90": 0.19013711020490145,
+        "q95": 0.2618933409585539
+      },
+      "method_description": "Empirical residual sampling using 5-fold cross-validated out-of-fold predictions on the training partition.",
+      "sklearn_version": "1.9.1",
+      "seed": 42,
+      "training_date": "2026-11-21T15:36:24.050469+00:00"
+    }
   }
 }

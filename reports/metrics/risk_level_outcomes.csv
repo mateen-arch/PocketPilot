@@ -1,0 +1,46 @@
+task,budget_percentile,level,count,observed_exceed_rate
+battery,20,Safe,23,0.0
+battery,20,Watch,5,0.2
+battery,20,Likely exceed,112,1.0
+battery,35,Safe,30,0.03333333333333333
+battery,35,Watch,25,0.36
+battery,35,Likely exceed,85,0.9882352941176471
+battery,50,Safe,57,0.017543859649122806
+battery,50,Watch,8,0.375
+battery,50,Likely exceed,75,0.88
+battery,65,Safe,83,0.0
+battery,65,Watch,3,0.0
+battery,65,Likely exceed,54,0.8148148148148148
+battery,80,Safe,85,0.0
+battery,80,Watch,28,0.0
+battery,80,Likely exceed,27,1.0
+data,20,Safe,25,0.0
+data,20,Watch,2,0.0
+data,20,Likely exceed,113,1.0
+data,35,Safe,33,0.06060606060606061
+data,35,Watch,23,0.21739130434782608
+data,35,Likely exceed,84,1.0
+data,50,Safe,56,0.0
+data,50,Watch,13,0.5384615384615384
+data,50,Likely exceed,71,0.9436619718309859
+data,65,Safe,83,0.0
+data,65,Watch,2,0.0
+data,65,Likely exceed,55,0.8909090909090909
+data,80,Safe,93,0.0
+data,80,Watch,20,0.0
+data,80,Likely exceed,27,1.0
+screen_time,20,Safe,25,0.0
+screen_time,20,Watch,3,0.3333333333333333
+screen_time,20,Likely exceed,112,0.9821428571428571
+screen_time,35,Safe,32,0.0
+screen_time,35,Watch,25,0.44
+screen_time,35,Likely exceed,83,1.0
+screen_time,50,Safe,57,0.0
+screen_time,50,Watch,11,0.6363636363636364
+screen_time,50,Likely exceed,72,0.9027777777777778
+screen_time,65,Safe,85,0.0
+screen_time,65,Watch,0,0.0
+screen_time,65,Likely exceed,55,0.7818181818181819
+screen_time,80,Safe,85,0.0
+screen_time,80,Watch,28,0.0
+screen_time,80,Likely exceed,27,1.0

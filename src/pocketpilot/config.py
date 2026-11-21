@@ -71,3 +71,18 @@ CLUSTER_K_REPORT_RANGE: list[int] = list(range(2, 9))
 # Documented design decision: selection is restricted to 3 to 6 profiles so that
 # persona labels remain granular yet readily interpretable for non-expert users.
 CLUSTER_K_SELECT_RANGE: tuple[int, int] = (3, 6)
+
+# Saved regression model locations
+MODEL_PATHS: dict[str, Path] = {
+    "battery": MODELS_DIR / "battery_model.joblib",
+    "data": MODELS_DIR / "data_usage_model.joblib",
+    "screen_time": MODELS_DIR / "screen_time_model.joblib",
+}
+
+# Budget overrun risk constants
+RISK_MODEL_PATH: Path = MODELS_DIR / "risk_model.joblib"
+WATCH_FRACTION: float = 0.8
+INTERVAL_LEVELS: tuple[float, float] = (0.8, 0.9)
+BUDGET_PERCENTILES: tuple[int, ...] = (20, 35, 50, 65, 80)
+HETEROSCEDASTICITY_RHO_THRESHOLD: float = 0.2
+OVERRUN_PROB_DECISION: float = 0.5
