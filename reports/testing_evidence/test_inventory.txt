@@ -1,6 +1,6 @@
 ======================================================================
 POCKETPILOT TEST EXECUTION EVIDENCE
-Timestamp (UTC): 2026-11-21T18:08:48.626699+00:00
+Timestamp (UTC): 2026-11-21T18:13:57.485722+00:00
 Python: 3.12.10 (D:\Mateen\PocketPilot\.venv_check\Scripts\python.exe)
 scikit-learn: 1.9.1
 xgboost: 3.4.1
@@ -74,6 +74,7 @@ tests/test_no_leakage.py::test_task_specific_target_exclusions
 tests/test_no_leakage.py::test_assert_no_leakage_enforcement
 tests/test_no_leakage.py::test_invalid_task_mode_combinations
 tests/test_no_leakage.py::test_preprocessor_fitting_and_transformation
+tests/test_packaging.py::test_build_zip_exclusions_and_structure
 tests/test_planner.py::test_grid_properties
 tests/test_planner.py::test_cost_formula_and_monotonicity
 tests/test_planner.py::test_noop_reproduces_direct_predictions
@@ -118,4 +119,4 @@ tests/test_shap.py::test_shap_determinism
 tests/test_trace.py::test_trace_battery_pipeline
 tests/test_trace.py::test_trace_screen_time_pipeline_no_screen_or_share
 
-109 tests collected in 3.27s
+110 tests collected in 3.14s
