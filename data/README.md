@@ -10,8 +10,8 @@
 - **Provenance**: The Kaggle page states the data is generated from simulated user behavior.
 - **Targets**: Battery Drain (mAh/day), Data Usage (MB/day), Screen On Time (hours/day, estimation model).
 - **Known characteristics**: 5 device models only (Google Pixel 5, OnePlus 9, Samsung Galaxy S21, Xiaomi Mi 11 are Android; iPhone 12 is iOS), so Operating System is redundant with Device Model. App time, screen time, app count, battery and data are highly correlated with each other (r about 0.93 to 0.98). Age is uncorrelated with every other numeric column (r about 0). User Behavior Class is a banding of the usage columns (for example class 1 = app time 30 to 89 min, class 5 = 481 to 598 min), so it must NOT be used as an input in Forecast mode.
-- **Preprocessing**: TODO (to be filled once the pipeline exists).
-- **Train/test split**: TODO.
+- **Preprocessing**: Columns renamed to snake_case; duplicates and nulls checked (none found); physical range validation; no outlier removal or scaling at cleaning time. Device Model is one-hot encoded and numeric features are standardized inside the model pipelines, fitted on the training split only.
+- **Train/test split**: 80/20 split stratified on User Behavior Class, random_state 42, giving 560 training and 140 test rows; the test set is used only for final evaluation.
 
 ## Dataset 2: Mobile App Usage & Screen Time 2022-2024 (supplementary, optional)
 

@@ -9,6 +9,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 RAW_DIR = PROJECT_ROOT / "data" / "raw"
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
+MODELS_DIR = PROJECT_ROOT / "models"
 
 DS1_PATH = RAW_DIR / "user_behavior_dataset.csv"
 DS2_PATH = RAW_DIR / "mobile_app_usage_screen_time.csv"
@@ -63,3 +64,10 @@ DEVICE_OS_MAP: dict[str, str] = {
 # Output split paths for cleaned and split Dataset 1
 PROCESSED_TRAIN_PATH: Path = PROCESSED_DIR / "ds1_train.csv"
 PROCESSED_TEST_PATH: Path = PROCESSED_DIR / "ds1_test.csv"
+
+# Clustering model path and evaluation ranges
+CLUSTERING_MODEL_PATH: Path = MODELS_DIR / "clustering_model.joblib"
+CLUSTER_K_REPORT_RANGE: list[int] = list(range(2, 9))
+# Documented design decision: selection is restricted to 3 to 6 profiles so that
+# persona labels remain granular yet readily interpretable for non-expert users.
+CLUSTER_K_SELECT_RANGE: tuple[int, int] = (3, 6)

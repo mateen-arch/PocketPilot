@@ -88,5 +88,26 @@
     "sklearn_version": "1.9.1",
     "random_seed": 42,
     "training_date": "2026-11-21T15:04:28.453198+00:00"
+  },
+  "clustering": {
+    "selected_k": 4,
+    "selection_rule": "highest silhouette score within CLUSTER_K_SELECT_RANGE (3 to 6) on training split",
+    "silhouette": 0.5923712884610756,
+    "davies_bouldin": 0.548897656013864,
+    "label_map": {
+      "0": "Light use",
+      "2": "Moderate use",
+      "1": "Heavy use",
+      "3": "Very heavy use"
+    },
+    "feature_list": [
+      "app_usage_min",
+      "screen_on_hours",
+      "battery_mah",
+      "data_mb"
+    ],
+    "sklearn_version": "1.9.1",
+    "random_seed": 42,
+    "training_date": "2026-11-21T15:27:46.396639+00:00"
   }
 }
