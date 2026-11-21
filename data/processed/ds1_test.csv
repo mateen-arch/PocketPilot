@@ -1,0 +1,141 @@
+user_id,device_model,os,app_usage_min,screen_on_hours,battery_mah,apps_installed,data_mb,age,gender,behavior_class
+655,Google Pixel 5,Android,594,10.5,2839,91,1647,56,Male,5
+558,Samsung Galaxy S21,Android,198,4.2,1392,43,640,27,Male,3
+34,Google Pixel 5,Android,46,2.0,457,14,105,58,Male,1
+129,Xiaomi Mi 11,Android,125,2.5,678,34,465,31,Male,2
+592,Google Pixel 5,Android,580,11.5,2767,84,2341,36,Female,5
+46,Xiaomi Mi 11,Android,502,10.9,2476,96,1935,39,Male,5
+417,Xiaomi Mi 11,Android,264,5.1,1293,52,737,27,Female,3
+460,OnePlus 9,Android,174,2.4,639,37,545,50,Male,2
+504,Google Pixel 5,Android,200,5.8,1291,50,965,52,Male,3
+102,OnePlus 9,Android,183,4.1,1210,45,738,19,Male,3
+362,OnePlus 9,Android,557,10.4,2900,97,1609,22,Male,5
+96,Xiaomi Mi 11,Android,326,7.2,2243,73,1454,50,Male,4
+496,Google Pixel 5,Android,493,10.9,2928,88,2116,57,Male,5
+173,OnePlus 9,Android,153,2.8,935,25,578,37,Female,2
+83,Xiaomi Mi 11,Android,330,7.2,2363,77,1133,21,Female,4
+50,OnePlus 9,Android,589,8.7,2736,82,1997,49,Male,5
+593,Samsung Galaxy S21,Android,379,7.7,1809,64,1050,22,Female,4
+51,Xiaomi Mi 11,Android,452,7.4,2180,61,1417,54,Female,4
+658,Xiaomi Mi 11,Android,278,5.3,1368,56,894,40,Female,3
+248,Google Pixel 5,Android,314,6.2,2205,63,1066,19,Male,4
+518,iPhone 12,iOS,64,1.2,592,19,218,25,Male,1
+301,Xiaomi Mi 11,Android,420,6.5,2113,65,1314,35,Male,4
+411,Samsung Galaxy S21,Android,501,11.8,2790,86,2074,31,Female,5
+292,Google Pixel 5,Android,55,1.6,360,19,149,30,Male,1
+503,Xiaomi Mi 11,Android,582,8.4,2664,91,2493,55,Female,5
+65,Samsung Galaxy S21,Android,459,7.0,1982,67,1091,43,Male,4
+656,Google Pixel 5,Android,104,3.7,1028,29,493,39,Male,2
+633,iPhone 12,iOS,496,10.2,2587,84,1921,56,Female,5
+442,Samsung Galaxy S21,Android,223,5.7,1295,44,751,39,Male,3
+545,Google Pixel 5,Android,544,9.7,2633,97,1727,28,Female,5
+136,iPhone 12,iOS,555,11.3,2528,90,1856,55,Female,5
+374,Google Pixel 5,Android,560,11.3,2947,95,1663,25,Female,5
+124,Google Pixel 5,Android,529,8.1,2686,96,1924,35,Male,5
+267,iPhone 12,iOS,181,4.1,1608,43,752,22,Female,3
+627,iPhone 12,iOS,210,5.0,1614,53,679,55,Female,3
+423,iPhone 12,iOS,416,6.1,2115,71,1041,22,Female,4
+30,Samsung Galaxy S21,Android,412,6.2,1899,78,1384,19,Female,4
+242,Xiaomi Mi 11,Android,564,11.7,2764,81,2133,37,Female,5
+300,Xiaomi Mi 11,Android,122,3.3,748,35,499,59,Female,2
+492,iPhone 12,iOS,152,3.7,948,22,507,53,Female,2
+560,OnePlus 9,Android,553,11.6,2914,81,1860,47,Male,5
+632,Samsung Galaxy S21,Android,216,5.1,1483,54,977,45,Female,3
+19,Google Pixel 5,Android,81,1.4,558,16,297,26,Female,1
+533,iPhone 12,iOS,431,6.4,2206,66,1200,23,Female,4
+591,Samsung Galaxy S21,Android,159,3.7,630,33,575,30,Male,2
+414,iPhone 12,iOS,270,5.0,1532,51,957,35,Male,3
+76,Xiaomi Mi 11,Android,229,5.7,1305,43,985,23,Female,3
+611,iPhone 12,iOS,507,9.6,2606,95,1543,48,Male,5
+677,OnePlus 9,Android,141,3.8,689,38,576,34,Male,2
+190,Samsung Galaxy S21,Android,42,1.1,402,11,265,32,Female,1
+314,Xiaomi Mi 11,Android,130,3.0,820,21,308,49,Female,2
+456,iPhone 12,iOS,74,1.6,436,13,182,27,Female,1
+629,Xiaomi Mi 11,Android,47,1.2,437,18,234,55,Male,1
+565,Xiaomi Mi 11,Android,290,4.4,1272,55,910,44,Male,3
+122,OnePlus 9,Android,529,8.7,2484,89,2189,39,Female,5
+555,iPhone 12,iOS,387,6.6,2168,61,1246,19,Female,4
+303,iPhone 12,iOS,469,6.0,2290,67,1086,34,Female,4
+174,iPhone 12,iOS,368,6.6,1817,72,1406,27,Female,4
+100,OnePlus 9,Android,225,5.5,1526,44,875,50,Female,3
+333,OnePlus 9,Android,191,6.0,1762,45,904,54,Male,3
+547,OnePlus 9,Android,236,4.6,1750,45,971,21,Female,3
+664,Google Pixel 5,Android,469,6.4,1858,78,1297,55,Female,4
+614,Google Pixel 5,Android,49,1.1,395,16,153,46,Female,1
+552,Samsung Galaxy S21,Android,157,2.5,1110,30,373,37,Female,2
+523,Xiaomi Mi 11,Android,438,6.5,1849,64,1125,49,Female,4
+636,Samsung Galaxy S21,Android,96,3.4,1198,39,401,48,Female,2
+234,OnePlus 9,Android,129,3.4,1059,27,580,36,Female,2
+434,OnePlus 9,Android,46,2.0,309,15,116,42,Male,1
+410,Google Pixel 5,Android,405,6.9,2366,61,1434,51,Male,4
+578,iPhone 12,iOS,381,7.5,2216,66,1291,37,Female,4
+463,Samsung Galaxy S21,Android,216,5.9,1789,54,987,55,Male,3
+93,iPhone 12,iOS,84,1.4,501,16,284,56,Female,1
+324,Xiaomi Mi 11,Android,76,1.3,490,14,156,31,Female,1
+513,Samsung Galaxy S21,Android,36,1.6,442,17,249,34,Male,1
+344,iPhone 12,iOS,290,6.0,1533,54,645,57,Female,3
+546,OnePlus 9,Android,50,2.0,362,17,182,34,Female,1
+18,iPhone 12,iOS,299,5.8,1431,41,985,44,Female,3
+133,Google Pixel 5,Android,176,3.6,1193,30,458,40,Female,2
+404,Samsung Galaxy S21,Android,566,8.6,2595,89,1657,51,Female,5
+253,Google Pixel 5,Android,523,10.5,2460,99,1787,22,Male,5
+573,OnePlus 9,Android,211,5.9,1757,42,864,56,Female,3
+651,Google Pixel 5,Android,149,2.0,1041,39,356,49,Male,2
+619,OnePlus 9,Android,342,7.0,1826,71,1077,26,Female,4
+448,Samsung Galaxy S21,Android,234,5.2,1604,58,919,58,Male,3
+352,Google Pixel 5,Android,60,1.5,593,14,281,35,Female,1
+305,iPhone 12,iOS,155,2.9,1117,22,322,19,Female,2
+26,Samsung Galaxy S21,Android,91,3.4,1073,38,451,52,Male,2
+648,iPhone 12,iOS,66,1.5,565,17,283,42,Female,1
+68,Xiaomi Mi 11,Android,134,4.0,773,35,449,28,Female,2
+660,Xiaomi Mi 11,Android,505,9.6,2464,91,2375,35,Male,5
+624,OnePlus 9,Android,42,1.8,417,15,284,21,Male,1
+1,Google Pixel 5,Android,393,6.4,1872,67,1122,40,Male,4
+134,Samsung Galaxy S21,Android,79,1.0,313,18,139,42,Male,1
+595,Xiaomi Mi 11,Android,447,6.3,1959,63,1441,48,Male,4
+81,OnePlus 9,Android,565,10.6,2475,99,1603,51,Female,5
+635,iPhone 12,iOS,318,6.6,2055,67,1253,43,Male,4
+261,Xiaomi Mi 11,Android,64,1.3,490,14,151,43,Female,1
+359,Google Pixel 5,Android,74,2.0,366,13,253,44,Female,1
+92,Google Pixel 5,Android,291,4.1,1474,46,827,32,Female,3
+439,OnePlus 9,Android,105,3.0,728,24,343,52,Female,2
+168,Google Pixel 5,Android,35,1.5,467,10,158,58,Male,1
+674,Google Pixel 5,Android,37,1.6,490,18,216,52,Male,1
+186,Google Pixel 5,Android,498,10.7,2738,94,1995,42,Male,5
+311,Samsung Galaxy S21,Android,230,4.2,1507,51,868,25,Female,3
+213,Samsung Galaxy S21,Android,133,3.4,714,38,445,25,Male,2
+369,OnePlus 9,Android,102,3.9,747,36,408,49,Female,2
+467,Samsung Galaxy S21,Android,414,7.3,2349,75,1092,51,Male,4
+654,Samsung Galaxy S21,Android,49,1.2,365,19,144,29,Male,1
+64,Xiaomi Mi 11,Android,545,11.5,2911,87,1717,21,Female,5
+119,Samsung Galaxy S21,Android,82,1.6,590,13,124,28,Female,1
+428,OnePlus 9,Android,105,3.8,967,28,489,51,Male,2
+540,OnePlus 9,Android,592,9.4,2867,95,1701,27,Female,5
+294,Xiaomi Mi 11,Android,226,4.5,1781,45,649,27,Female,3
+161,Samsung Galaxy S21,Android,64,1.6,540,19,262,35,Female,1
+526,Samsung Galaxy S21,Android,224,4.5,1646,57,665,59,Male,3
+82,iPhone 12,iOS,172,2.8,1035,22,549,41,Male,2
+631,Google Pixel 5,Android,94,3.1,1078,38,489,25,Male,2
+697,Xiaomi Mi 11,Android,316,6.8,1965,68,1201,59,Male,4
+137,Samsung Galaxy S21,Android,66,1.7,375,16,216,39,Male,1
+579,OnePlus 9,Android,257,6.0,1715,49,916,40,Female,3
+412,Xiaomi Mi 11,Android,575,8.2,2918,88,1928,50,Male,5
+153,Google Pixel 5,Android,120,2.0,741,38,396,56,Female,2
+268,OnePlus 9,Android,584,9.4,2766,84,2151,32,Male,5
+600,Samsung Galaxy S21,Android,192,4.3,1382,42,905,47,Female,3
+493,Xiaomi Mi 11,Android,87,1.5,594,19,198,36,Female,1
+285,Google Pixel 5,Android,411,6.9,1820,70,1024,43,Male,4
+202,iPhone 12,iOS,127,3.7,1153,35,314,37,Female,2
+675,Xiaomi Mi 11,Android,522,11.4,2776,93,1768,27,Female,5
+130,Xiaomi Mi 11,Android,97,3.3,751,39,412,36,Female,2
+478,iPhone 12,iOS,258,4.2,1315,44,762,59,Female,3
+551,Xiaomi Mi 11,Android,455,6.2,1984,72,1287,42,Male,4
+601,iPhone 12,iOS,325,6.0,2244,70,1296,30,Female,4
+275,iPhone 12,iOS,122,2.6,639,37,568,35,Male,2
+563,Google Pixel 5,Android,71,1.4,508,15,265,33,Female,1
+485,iPhone 12,iOS,444,6.0,1873,61,1093,39,Female,4
+681,Google Pixel 5,Android,307,6.1,2105,76,1111,25,Female,4
+498,iPhone 12,iOS,102,2.9,918,37,362,20,Female,2
+24,Google Pixel 5,Android,292,5.6,1401,46,949,37,Female,3
+3,Xiaomi Mi 11,Android,154,4.0,761,32,322,42,Male,2
+149,OnePlus 9,Android,228,4.2,1677,58,823,56,Male,3
