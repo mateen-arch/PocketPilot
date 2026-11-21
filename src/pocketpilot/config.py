@@ -101,3 +101,9 @@ W3_WIFI_PER_PCT_POINT: float = 0.5
 PLANNER_TOP_N: int = 5
 PLANNER_BUDGET_SETTINGS: dict[str, int] = {"tight": 35, "moderate": 50, "loose": 65}   # train-target percentiles used for evaluation only
 
+# Battery survival estimator constants (Feature F8)
+WAKING_HOURS: float = 16.0  # ASSUMPTION: daily drain is spread evenly over waking hours
+DEFAULT_MIN_BATTERY_PCT: int = 15
+CAPACITY_RANGE_MAH: tuple[int, int] = (1000, 10000)
+UNCONSTRAINED_BUDGET: float = 1e9  # used to leave a resource unconstrained in the planner
+

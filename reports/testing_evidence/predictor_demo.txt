@@ -1,0 +1,51 @@
+===========================================================================
+POCKETPILOT UNIFIED PREDICTOR DEMONSTRATION (FEATURE F8)
+===========================================================================
+Loaded artifacts successfully from: models/
+
+---------------------------------------------------------------------------
+SCENARIO 1: TYPICAL USER
+---------------------------------------------------------------------------
+Device: Samsung Galaxy S21 | App Usage: 250 min | Screen: 5.0 h | Apps: 50
+Battery State: 38% at 16.0:00 | Target: 22.0:00 | Min Reserve: 15% | Capacity: 4000 mAh
+Budgets: Battery=1800.0 mAh, Data=1000.0 MB, Screen=6.0 h
+
+1. FORECAST & RISK:
+   * Battery Drain: 1524.9 mAh (Overrun Risk: Safe, P(overrun)=0.2%)
+   * Data Usage:    822.4 MB (Overrun Risk: Watch, P(overrun)=14.6%)
+   * Screen Time:   5.0 h (Overrun Risk: Watch, P(overrun)=10.0%)
+
+2. BATTERY SURVIVAL:
+   * Usable Capacity:       920.0 mAh
+   * Hourly Drain Rate:     95.3 mAh/h (over 16.0 waking hours)
+   * Expected Survival:     9.7 hours [80% Interval: 8.2 - 12.3 h]
+   * Duration Needed:       6.0 hours (until 22.0:00)
+   * Equivalent Daily Cap:  2453.3 mAh
+   * P(make it):            99.8%
+   * Expected to Make It:   True
+
+3. VERDICT: "You will make it: your battery is expected to last 9.7 hours (99.8% probability), covering your needed 6.0 hours."
+
+---------------------------------------------------------------------------
+SCENARIO 2: HEAVY USER
+---------------------------------------------------------------------------
+Device: iPhone 12 | App Usage: 480 min | Screen: 9.0 h | Apps: 85
+Battery State: 40% at 14.0:00 | Target: 23.0:00 | Min Reserve: 15% | Capacity: 3000 mAh
+Budgets: Battery=1800.0 mAh, Data=1000.0 MB, Screen=6.0 h
+
+1. FORECAST & RISK:
+   * Battery Drain: 2679.8 mAh (Overrun Risk: Likely exceed, P(overrun)=99.8%)
+   * Data Usage:    1973.2 MB (Overrun Risk: Likely exceed, P(overrun)=99.5%)
+   * Screen Time:   9.5 h (Overrun Risk: Likely exceed, P(overrun)=99.6%)
+
+2. BATTERY SURVIVAL:
+   * Usable Capacity:       750.0 mAh
+   * Hourly Drain Rate:     167.5 mAh/h (over 16.0 waking hours)
+   * Expected Survival:     4.5 hours [80% Interval: 3.8 - 5.7 h]
+   * Duration Needed:       9.0 hours (until 23.0:00)
+   * Equivalent Daily Cap:  1333.3 mAh
+   * P(make it):            0.2%
+   * Expected to Make It:   False
+
+3. VERDICT: "You are unlikely to make it (predicted survival: 4.5 h vs 9.0 h needed, P(make it)=0.2%), and no viable plan was found within normal operating limits."
+===========================================================================

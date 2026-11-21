@@ -1,6 +1,6 @@
 ======================================================================
 POCKETPILOT TEST EXECUTION EVIDENCE
-Timestamp (UTC): 2026-11-21T16:51:39.602532+00:00
+Timestamp (UTC): 2026-11-21T17:07:32.293199+00:00
 Python: 3.12.10 (D:\Mateen\PocketPilot\.venv_check\Scripts\python.exe)
 scikit-learn: 1.9.1
 xgboost: 3.4.1
@@ -63,6 +63,16 @@ tests/test_planner.py::test_determinism_and_immutability
 tests/test_planner.py::test_bounded_screen_follow_through
 tests/test_planner.py::test_allow_assumptions_false
 tests/test_planner.py::test_default_call_retains_behavior_unbound
+tests/test_predictor.py::test_forecast_in_memory
+tests/test_predictor.py::test_screen_known_toggle
+tests/test_predictor.py::test_survival_hand_calc_stub
+tests/test_predictor.py::test_survival_boundaries
+tests/test_predictor.py::test_survival_p_make_it_monotonicity
+tests/test_predictor.py::test_profile_and_profile_history
+tests/test_predictor.py::test_validation_errors
+tests/test_predictor.py::test_inputs_not_mutated_and_deterministic
+tests/test_predictor.py::test_saved_artifacts_load_and_forecast_equality
+tests/test_predictor.py::test_saved_artifacts_will_i_make_it
 tests/test_risk.py::test_threshold_risk_level_boundaries
 tests/test_risk.py::test_risk_input_validation
 tests/test_risk.py::test_risk_bundle_fitted_on_train_split_only
@@ -72,5 +82,12 @@ tests/test_risk.py::test_probabilistic_calibration_and_clipping
 tests/test_risk.py::test_prediction_interval_containment_and_nonnegativity
 tests/test_risk.py::test_empirical_interval_coverage_on_test_split
 tests/test_risk.py::test_assess_budget_keys_and_serialization
+tests/test_shap.py::test_shap_additivity
+tests/test_shap.py::test_shap_shape_and_no_leakage
+tests/test_shap.py::test_group_device_features_preserves_sums
+tests/test_shap.py::test_mean_abs_importance
+tests/test_shap.py::test_explain_one
+tests/test_shap.py::test_linear_model_raises_value_error
+tests/test_shap.py::test_shap_determinism
 
-64 tests collected in 1.72s
+81 tests collected in 2.19s

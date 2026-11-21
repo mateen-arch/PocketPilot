@@ -1,6 +1,6 @@
 ======================================================================
 POCKETPILOT TEST EXECUTION EVIDENCE
-Timestamp (UTC): 2026-11-21T16:51:39.602532+00:00
+Timestamp (UTC): 2026-11-21T17:07:32.293199+00:00
 Python: 3.12.10 (D:\Mateen\PocketPilot\.venv_check\Scripts\python.exe)
 scikit-learn: 1.9.1
 xgboost: 3.4.1
@@ -8,12 +8,13 @@ pandas: 2.2.3
 numpy: 2.5.3
 streamlit: 1.67.0
 ======================================================================
-................................................................         [100%]
+........................................................................ [ 88%]
+.........                                                                [100%]
 =================================== PASSES ====================================
 __________________________ test_streamlit_app_smoke ___________________________
 ---------------------------- Captured stderr call -----------------------------
-2026-11-21 21:51:43.200 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-11-21 21:51:44.382 
+2026-11-21 22:07:35.362 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 22:07:35.543 
 'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
 Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
 upload routes, which stay pinned to the app address and still require a valid
@@ -30,12 +31,12 @@ To limit cross-origin access, do these steps:
 'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
 WebSocket connection.
 
-2026-11-21 21:51:44.900 Please replace `use_container_width` with `width`.
+2026-11-21 22:07:35.971 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 21:51:45.272 Please replace `use_container_width` with `width`.
+2026-11-21 22:07:36.006 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
@@ -96,6 +97,16 @@ PASSED tests/test_planner.py::test_determinism_and_immutability
 PASSED tests/test_planner.py::test_bounded_screen_follow_through
 PASSED tests/test_planner.py::test_allow_assumptions_false
 PASSED tests/test_planner.py::test_default_call_retains_behavior_unbound
+PASSED tests/test_predictor.py::test_forecast_in_memory
+PASSED tests/test_predictor.py::test_screen_known_toggle
+PASSED tests/test_predictor.py::test_survival_hand_calc_stub
+PASSED tests/test_predictor.py::test_survival_boundaries
+PASSED tests/test_predictor.py::test_survival_p_make_it_monotonicity
+PASSED tests/test_predictor.py::test_profile_and_profile_history
+PASSED tests/test_predictor.py::test_validation_errors
+PASSED tests/test_predictor.py::test_inputs_not_mutated_and_deterministic
+PASSED tests/test_predictor.py::test_saved_artifacts_load_and_forecast_equality
+PASSED tests/test_predictor.py::test_saved_artifacts_will_i_make_it
 PASSED tests/test_risk.py::test_threshold_risk_level_boundaries
 PASSED tests/test_risk.py::test_risk_input_validation
 PASSED tests/test_risk.py::test_risk_bundle_fitted_on_train_split_only
@@ -105,4 +116,11 @@ PASSED tests/test_risk.py::test_probabilistic_calibration_and_clipping
 PASSED tests/test_risk.py::test_prediction_interval_containment_and_nonnegativity
 PASSED tests/test_risk.py::test_empirical_interval_coverage_on_test_split
 PASSED tests/test_risk.py::test_assess_budget_keys_and_serialization
-64 passed in 32.56s
+PASSED tests/test_shap.py::test_shap_additivity
+PASSED tests/test_shap.py::test_shap_shape_and_no_leakage
+PASSED tests/test_shap.py::test_group_device_features_preserves_sums
+PASSED tests/test_shap.py::test_mean_abs_importance
+PASSED tests/test_shap.py::test_explain_one
+PASSED tests/test_shap.py::test_linear_model_raises_value_error
+PASSED tests/test_shap.py::test_shap_determinism
+81 passed in 35.57s
