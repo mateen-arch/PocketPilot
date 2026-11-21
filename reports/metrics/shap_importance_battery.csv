@@ -1,0 +1,15 @@
+feature,mean_abs_shap,feature_type
+app_usage_min,473.7243347167969,transformed
+screen_on_hours,159.81021118164062,transformed
+apps_installed,68.75467681884766,transformed
+app_share_of_screen,8.230803489685059,transformed
+device_model_Xiaomi Mi 11,4.2479376792907715,transformed
+device_model_Google Pixel 5,1.661855697631836,transformed
+device_model_iPhone 12,1.1597552299499512,transformed
+device_model_OnePlus 9,0.35042446851730347,transformed
+device_model_Samsung Galaxy S21,0.0,transformed
+app_usage_min,473.7243347167969,grouped
+screen_on_hours,159.81027221679688,grouped
+apps_installed,68.75469970703125,grouped
+app_share_of_screen,8.23080062866211,grouped
+device_model,5.077874660491943,grouped

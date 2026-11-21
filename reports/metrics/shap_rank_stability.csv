@@ -1,0 +1,4 @@
+task,model,spearman_rho,p_value,top3_train,top3_test
+battery,XGBRegressor,0.9999999999999999,1.4042654220543602e-24,"app_usage_min, screen_on_hours, apps_installed","app_usage_min, screen_on_hours, apps_installed"
+data,RandomForestRegressor,0.9999999999999999,1.4042654220543602e-24,"apps_installed, app_usage_min, screen_on_hours","apps_installed, app_usage_min, screen_on_hours"
+screen_time,XGBRegressor,1.0,0.0,"app_usage_min, apps_installed, device_model","app_usage_min, apps_installed, device_model"
