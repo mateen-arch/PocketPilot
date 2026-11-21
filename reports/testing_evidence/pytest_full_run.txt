@@ -1,6 +1,6 @@
 ======================================================================
 POCKETPILOT TEST EXECUTION EVIDENCE
-Timestamp (UTC): 2026-11-21T17:07:32.293199+00:00
+Timestamp (UTC): 2026-11-21T17:34:50.644898+00:00
 Python: 3.12.10 (D:\Mateen\PocketPilot\.venv_check\Scripts\python.exe)
 scikit-learn: 1.9.1
 xgboost: 3.4.1
@@ -8,13 +8,75 @@ pandas: 2.2.3
 numpy: 2.5.3
 streamlit: 1.67.0
 ======================================================================
-........................................................................ [ 88%]
-.........                                                                [100%]
+.....................................................................F.. [ 82%]
+...............                                                          [100%]
+================================== FAILURES ===================================
+_______________ test_saved_artifacts_load_and_forecast_equality _______________
+
+    @pytest.mark.skipif(not _saved_artifacts_exist(), reason="Production models missing from models/ directory")
+    def test_saved_artifacts_load_and_forecast_equality():
+        """
+        Verify production artifacts load properly and forecast matches direct pipeline calls.
+        """
+        artifacts = load_artifacts()
+        assert "pipelines" in artifacts
+        assert "clustering" in artifacts
+        assert "risk" in artifacts
+    
+        inputs = {
+            "device_model": "Samsung Galaxy S21",
+            "app_usage_min": 250,
+            "screen_on_hours": 5.0,
+            "apps_installed": 50,
+        }
+        budgets = {"battery_mah": 1800.0, "data_mb": 1000.0, "screen_hours": 6.0}
+    
+        res = forecast(artifacts, inputs, budgets, screen_known=True)
+    
+        # Compare against direct pipeline calls
+        raw_df_bat = pd.DataFrame([{
+            "device_model": inputs["device_model"],
+            "app_usage_min": inputs["app_usage_min"],
+            "screen_on_hours": inputs["screen_on_hours"],
+            "apps_installed": inputs["apps_installed"],
+        }])
+        raw_df_screen = pd.DataFrame([{
+            "device_model": inputs["device_model"],
+            "app_usage_min": inputs["app_usage_min"],
+            "apps_installed": inputs["apps_installed"],
+        }])
+    
+        pipe_bat = artifacts["pipelines"]["battery"]
+        pipe_data = artifacts["pipelines"]["data"]
+        pipe_screen = artifacts["pipelines"]["screen_time"]
+    
+        direct_bat = float(pipe_bat.predict(raw_df_bat)[0])
+        direct_data = float(pipe_data.predict(raw_df_bat)[0])
+        direct_screen = float(pipe_screen.predict(raw_df_screen)[0])
+    
+        assert np.isclose(res["predictions"]["battery_mah"], direct_bat)
+        assert np.isclose(res["predictions"]["data_mb"], direct_data)
+        # When screen_known is True, screen_hours predicted equals user input, and screen_model_estimate equals direct_screen
+        assert np.isclose(res["predictions"]["screen_hours"], inputs["screen_on_hours"])
+        assert np.isclose(res["screen_model_estimate"], direct_screen)
+        assert "budgets_used" in res
+    
+        # Determinism across repeated calls
+        res_repeat = forecast(artifacts, inputs, budgets, screen_known=True)
+>       assert res["predictions"] == res_repeat["predictions"]
+E       AssertionError: assert {'battery_mah...n_hours': 5.0} == {'battery_mah...n_hours': 5.0}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'data_mb': 822.4058559665579} != {'data_mb': 822.4058559665577}
+E         Use -v to get more diff
+
+tests\test_predictor.py:431: AssertionError
 =================================== PASSES ====================================
 __________________________ test_streamlit_app_smoke ___________________________
 ---------------------------- Captured stderr call -----------------------------
-2026-11-21 22:07:35.362 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-11-21 22:07:35.543 
+2026-11-21 22:34:54.643 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 22:34:55.767 
 'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
 Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
 upload routes, which stay pinned to the app address and still require a valid
@@ -31,12 +93,12 @@ To limit cross-origin access, do these steps:
 'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
 WebSocket connection.
 
-2026-11-21 22:07:35.971 Please replace `use_container_width` with `width`.
+2026-11-21 22:34:56.238 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:07:36.006 Please replace `use_container_width` with `width`.
+2026-11-21 22:34:56.812 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
@@ -62,6 +124,12 @@ PASSED tests/test_data_pipeline.py::test_load_ds2_preserves_none_category
 PASSED tests/test_data_pipeline.py::test_clean_ds1_standards_and_immutability
 PASSED tests/test_data_pipeline.py::test_clean_ds1_validation_failure
 PASSED tests/test_data_pipeline.py::test_split_ds1_properties
+PASSED tests/test_formatting.py::test_format_clock_valid
+PASSED tests/test_formatting.py::test_format_clock_invalid
+PASSED tests/test_formatting.py::test_format_probability_valid
+PASSED tests/test_formatting.py::test_format_probability_invalid
+PASSED tests/test_formatting.py::test_format_hours_valid
+PASSED tests/test_formatting.py::test_format_hours_invalid
 PASSED tests/test_models.py::test_pipeline_raw_inputs_and_predictions[battery]
 PASSED tests/test_models.py::test_pipeline_raw_inputs_and_predictions[data]
 PASSED tests/test_models.py::test_pipeline_raw_inputs_and_predictions[screen_time]
@@ -105,7 +173,6 @@ PASSED tests/test_predictor.py::test_survival_p_make_it_monotonicity
 PASSED tests/test_predictor.py::test_profile_and_profile_history
 PASSED tests/test_predictor.py::test_validation_errors
 PASSED tests/test_predictor.py::test_inputs_not_mutated_and_deterministic
-PASSED tests/test_predictor.py::test_saved_artifacts_load_and_forecast_equality
 PASSED tests/test_predictor.py::test_saved_artifacts_will_i_make_it
 PASSED tests/test_risk.py::test_threshold_risk_level_boundaries
 PASSED tests/test_risk.py::test_risk_input_validation
@@ -123,4 +190,5 @@ PASSED tests/test_shap.py::test_mean_abs_importance
 PASSED tests/test_shap.py::test_explain_one
 PASSED tests/test_shap.py::test_linear_model_raises_value_error
 PASSED tests/test_shap.py::test_shap_determinism
-81 passed in 35.57s
+FAILED tests/test_predictor.py::test_saved_artifacts_load_and_forecast_equality
+1 failed, 86 passed in 36.90s

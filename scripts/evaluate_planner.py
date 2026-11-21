@@ -54,74 +54,99 @@ def main() -> None:
     lever_usage_rows = []
     cost_data = {"all_levers": {}, "learned_only": {}}
 
-    modes = [("all_levers", True), ("learned_only", False)]
+    for setting_name, percentile in config.PLANNER_BUDGET_SETTINGS.items():
+        bat_budget = float(np.percentile(train_df[config.TARGET_BATTERY], percentile))
+        data_budget = float(np.percentile(train_df[config.TARGET_DATA], percentile))
+        screen_budget = float(np.percentile(train_df[config.TARGET_SCREEN], percentile))
 
-    for mode_name, allow_assump in modes:
-        for setting_name, percentile in config.PLANNER_BUDGET_SETTINGS.items():
-            bat_budget = float(np.percentile(train_df[config.TARGET_BATTERY], percentile))
-            data_budget = float(np.percentile(train_df[config.TARGET_DATA], percentile))
-            screen_budget = float(np.percentile(train_df[config.TARGET_SCREEN], percentile))
+        budgets = {
+            "battery_mah": bat_budget,
+            "data_mb": data_budget,
+            "screen_hours": screen_budget,
+        }
 
-            budgets = {
-                "battery_mah": bat_budget,
-                "data_mb": data_budget,
-                "screen_hours": screen_budget,
+        n_test = len(test_df)
+
+        # Baseline prediction for test users
+        raw_bat_in = test_df[TASK_RAW_INPUTS_MAP["battery"]]
+        raw_data_in = test_df[TASK_RAW_INPUTS_MAP["data"]]
+
+        base_bat_preds = pipelines["battery"].predict(raw_bat_in)
+        base_data_preds = pipelines["data"].predict(raw_data_in)
+        base_screen_preds = test_df["screen_on_hours"].values
+
+        is_over_budget = (
+            (base_bat_preds > bat_budget)
+            | (base_data_preds > data_budget)
+            | (base_screen_preds > screen_budget)
+        )
+
+        n_over_budget = int(is_over_budget.sum())
+
+        solved_cases_by_mode = {"all_levers": {}, "learned_only": {}}
+
+        for idx, row in test_df[is_over_budget].iterrows():
+            base_user = {
+                "device_model": str(row["device_model"]),
+                "app_usage_min": float(row["app_usage_min"]),
+                "screen_on_hours": float(row["screen_on_hours"]),
+                "apps_installed": int(row["apps_installed"]),
             }
 
-            n_test = len(test_df)
-            solved_cases = []
-
-            # Baseline prediction for test users
-            raw_bat_in = test_df[TASK_RAW_INPUTS_MAP["battery"]]
-            raw_data_in = test_df[TASK_RAW_INPUTS_MAP["data"]]
-
-            base_bat_preds = pipelines["battery"].predict(raw_bat_in)
-            base_data_preds = pipelines["data"].predict(raw_data_in)
-            base_screen_preds = test_df["screen_on_hours"].values
-
-            is_over_budget = (
-                (base_bat_preds > bat_budget)
-                | (base_data_preds > data_budget)
-                | (base_screen_preds > screen_budget)
+            # Evaluate all_levers
+            rec_all = recommend(
+                base=base_user,
+                budgets=budgets,
+                pipelines=pipelines,
+                risk_bundles=risk_bundles,
+                bounds=bounds,
+                safety_margin=0.0,
+                allow_assumptions=True,
             )
+            if rec_all["status"] == "plan_found":
+                solved_cases_by_mode["all_levers"][idx] = rec_all["best"]
 
-            n_over_budget = int(is_over_budget.sum())
+            # Evaluate learned_only
+            rec_learned = recommend(
+                base=base_user,
+                budgets=budgets,
+                pipelines=pipelines,
+                risk_bundles=risk_bundles,
+                bounds=bounds,
+                safety_margin=0.0,
+                allow_assumptions=False,
+            )
+            if rec_learned["status"] == "plan_found":
+                solved_cases_by_mode["learned_only"][idx] = rec_learned["best"]
 
-            for _, row in test_df[is_over_budget].iterrows():
-                base_user = {
-                    "device_model": str(row["device_model"]),
-                    "app_usage_min": float(row["app_usage_min"]),
-                    "screen_on_hours": float(row["screen_on_hours"]),
-                    "apps_installed": int(row["apps_installed"]),
-                }
+        # Calculate metrics for both modes
+        all_solved_idx = set(solved_cases_by_mode["all_levers"].keys())
+        learned_solved_idx = set(solved_cases_by_mode["learned_only"].keys())
 
-                rec = recommend(
-                    base=base_user,
-                    budgets=budgets,
-                    pipelines=pipelines,
-                    risk_bundles=risk_bundles,
-                    bounds=bounds,
-                    safety_margin=0.0,
-                    allow_assumptions=allow_assump,
-                )
+        # Requiring assumption levers: solved in all_levers but NOT solved in learned_only
+        requiring_assumptions_idx = all_solved_idx - learned_solved_idx
+        share_requiring = (
+            float(len(requiring_assumptions_idx) / len(all_solved_idx))
+            if len(all_solved_idx) > 0
+            else 0.0
+        )
 
-                if rec["status"] == "plan_found":
-                    solved_cases.append(rec["best"])
-
+        for mode_name in ("all_levers", "learned_only"):
+            solved_cases = list(solved_cases_by_mode[mode_name].values())
             n_solved = len(solved_cases)
             share_solved = float(n_solved / n_over_budget) if n_over_budget > 0 else 0.0
 
             if n_solved > 0:
                 costs = [c["action_cost"] for c in solved_cases]
                 app_cuts = [c["app_cut_min"] for c in solved_cases]
-                needs_assumption = [
+                using_assumption = [
                     (c["wifi_share"] > 0.0 or c["power_saving"]) for c in solved_cases
                 ]
 
                 mean_cost = float(np.mean(costs))
                 median_cost = float(np.median(costs))
                 mean_app_cut = float(np.mean(app_cuts))
-                share_assumption = float(np.mean(needs_assumption))
+                share_using = float(np.mean(using_assumption))
                 cost_data[mode_name][setting_name] = costs
 
                 app_cut_share = float(np.mean([c["app_cut_min"] > 0 for c in solved_cases]))
@@ -132,12 +157,14 @@ def main() -> None:
                 mean_cost = 0.0
                 median_cost = 0.0
                 mean_app_cut = 0.0
-                share_assumption = 0.0
+                share_using = 0.0
                 cost_data[mode_name][setting_name] = []
                 app_cut_share = 0.0
                 screen_cut_share = 0.0
                 wifi_shift_share = 0.0
                 ps_share = 0.0
+
+            req_val = share_requiring if mode_name == "all_levers" else 0.0
 
             solvability_rows.append({
                 "mode": mode_name,
@@ -150,7 +177,8 @@ def main() -> None:
                 "mean_action_cost": mean_cost,
                 "median_action_cost": median_cost,
                 "mean_app_cut_min": mean_app_cut,
-                "share_assumption_lever": share_assumption,
+                "share_using_assumption_levers": share_using,
+                "share_requiring_assumption_levers": req_val,
             })
 
             lever_usage_rows.append({
@@ -161,6 +189,11 @@ def main() -> None:
                 "wifi_shift_share": wifi_shift_share,
                 "power_saving_share": ps_share,
             })
+
+    # Sort rows so all_levers come first, then learned_only, or by mode and setting
+    # Keep consistent with prior ordering
+    solvability_rows.sort(key=lambda r: (0 if r["mode"] == "all_levers" else 1, r["percentile"]))
+    lever_usage_rows.sort(key=lambda r: (0 if r["mode"] == "all_levers" else 1, r["setting"]))
 
     solvability_df = pd.DataFrame(solvability_rows)
     lever_usage_df = pd.DataFrame(lever_usage_rows)
@@ -192,6 +225,7 @@ def main() -> None:
     }
 
     whatif_rows = []
+    modes = [("all_levers", True), ("learned_only", False)]
     for persona_name, user_base in personas:
         for mode_name, allow_assump in modes:
             rec = recommend(
@@ -375,6 +409,20 @@ def main() -> None:
     plt.savefig(fig_lever_path, dpi=300)
     plt.close()
     print(f"Saved {fig_lever_path.name}")
+
+    # Single recommend() call check on typical persona
+    typical_persona = {
+        "device_model": "Samsung Galaxy S21",
+        "app_usage_min": 250.0,
+        "screen_on_hours": 5.0,
+        "apps_installed": 50,
+    }
+    typical_budgets = {"battery_mah": 1800.0, "data_mb": 1000.0, "screen_hours": 6.0}
+    rec_typ_all = recommend(typical_persona, typical_budgets, pipelines, risk_bundles, bounds, allow_assumptions=True)
+    rec_typ_learned = recommend(typical_persona, typical_budgets, pipelines, risk_bundles, bounds, allow_assumptions=False)
+    print("\n--- SINGLE RECOMMEND CALL EVALUATION (TYPICAL PERSONA) ---")
+    print(f"  * all_levers mode:   n_evaluated = {rec_typ_all['n_evaluated']} (expected: 224)")
+    print(f"  * learned_only mode: n_evaluated = {rec_typ_learned['n_evaluated']} (expected: 28)")
 
 
 if __name__ == "__main__":

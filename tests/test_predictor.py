@@ -131,12 +131,19 @@ def test_screen_known_toggle(in_memory_artifacts):
     res_user = forecast(in_memory_artifacts, inputs, budgets, screen_known=True)
     assert res_user["screen_source"] == "user"
     assert res_user["screen_used"] == 7.5
+    assert res_user["predictions"]["screen_hours"] == 7.5
+    assert "screen_model_estimate" in res_user
+    assert res_user["screen_model_estimate"] != 7.5
+    assert "budgets_used" in res_user
 
     # screen_known = False: estimated by screen_time pipeline
     res_est = forecast(in_memory_artifacts, inputs, budgets, screen_known=False)
     assert res_est["screen_source"] == "model_estimate"
     assert res_est["screen_used"] != 7.5
     assert np.isfinite(res_est["screen_used"])
+    assert res_est["predictions"]["screen_hours"] == res_est["screen_model_estimate"]
+    assert "screen_model_estimate" in res_est
+    assert "budgets_used" in res_est
 
 
 def test_survival_hand_calc_stub():
@@ -414,7 +421,10 @@ def test_saved_artifacts_load_and_forecast_equality():
 
     assert np.isclose(res["predictions"]["battery_mah"], direct_bat)
     assert np.isclose(res["predictions"]["data_mb"], direct_data)
-    assert np.isclose(res["predictions"]["screen_hours"], direct_screen)
+    # When screen_known is True, screen_hours predicted equals user input, and screen_model_estimate equals direct_screen
+    assert np.isclose(res["predictions"]["screen_hours"], inputs["screen_on_hours"])
+    assert np.isclose(res["screen_model_estimate"], direct_screen)
+    assert "budgets_used" in res
 
     # Determinism across repeated calls
     res_repeat = forecast(artifacts, inputs, budgets, screen_known=True)
@@ -445,6 +455,7 @@ def test_saved_artifacts_will_i_make_it():
     res_easy = will_i_make_it(artifacts, inputs_easy, survival_easy)
     assert res_easy["survival"]["expected_to_make_it"] is True
     assert "will make it" in res_easy["verdict"].lower()
+    assert "budgets_used" in res_easy
 
     # Highly unachievable scenario: heavy phone, 20% battery, 13 hours needed
     inputs_hard = {
@@ -463,4 +474,5 @@ def test_saved_artifacts_will_i_make_it():
     res_hard = will_i_make_it(artifacts, inputs_hard, survival_hard)
     assert res_hard["survival"]["expected_to_make_it"] is False
     assert "unlikely to make it" in res_hard["verdict"].lower()
+    assert "budgets_used" in res_hard
     assert len(res_hard["verdict"]) > 10

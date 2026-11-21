@@ -221,9 +221,11 @@ def forecast(
 
     if screen_known:
         screen_source = "user"
-        screen_used = float(inputs["screen_on_hours"])
+        screen_pred_val = float(inputs["screen_on_hours"])
+        screen_used = screen_pred_val
     else:
         screen_source = "model_estimate"
+        screen_pred_val = model_screen_pred
         screen_used = model_screen_pred
 
     # 2. Battery and Data usage predictions
@@ -237,18 +239,25 @@ def forecast(
     data_pred = float(pipelines["data"].predict(full_df)[0])
 
     # 3. Assess budget risks
-    # Note: for the screen-time budget, the risk layer uses the screen-time model's
-    # typical relative error as the uncertainty distribution, even when the user entered the value.
+    # Note: for the screen-time budget, when screen_known is True, the point forecast evaluated
+    # against the budget is the user-entered screen_on_hours, with the screen-time model's
+    # typical relative error used for the uncertainty distribution.
     screen_budget_val = float(budgets.get("screen_hours", budgets.get("screen_time", 0.0)))
     bat_risk = assess_budget(risk["battery"], bat_pred, float(budgets["battery_mah"]))
     data_risk = assess_budget(risk["data"], data_pred, float(budgets["data_mb"]))
-    screen_risk = assess_budget(risk["screen_time"], model_screen_pred, screen_budget_val)
+    screen_risk = assess_budget(risk["screen_time"], screen_pred_val, screen_budget_val)
+
+    budgets_used = {
+        "battery_mah": float(budgets["battery_mah"]),
+        "data_mb": float(budgets["data_mb"]),
+        "screen_hours": screen_budget_val,
+    }
 
     return {
         "predictions": {
             "battery_mah": bat_pred,
             "data_mb": data_pred,
-            "screen_hours": model_screen_pred,
+            "screen_hours": screen_pred_val,
         },
         "risk": {
             "battery": bat_risk,
@@ -257,6 +266,8 @@ def forecast(
         },
         "screen_source": screen_source,
         "screen_used": screen_used,
+        "screen_model_estimate": model_screen_pred,
+        "budgets_used": budgets_used,
     }
 
 
@@ -723,4 +734,5 @@ def will_i_make_it(
         "forecast": forecast_res,
         "plan": plan_res,
         "verdict": verdict,
+        "budgets_used": forecast_res["budgets_used"],
     }

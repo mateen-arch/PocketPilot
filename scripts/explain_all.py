@@ -118,16 +118,17 @@ def run_explain_all() -> None:
         common_feats = list(train_grouped_imp.index)
         train_ranks = [train_grouped_imp[f] for f in common_feats]
         test_ranks = [grouped_imp[f] for f in common_feats]
-        rho, p_val = scipy.stats.spearmanr(train_ranks, test_ranks)
+        rho, _ = scipy.stats.spearmanr(train_ranks, test_ranks)
 
         top3_train = ", ".join(list(train_grouped_imp.index[:3]))
         top3_test = ", ".join(list(grouped_imp.index[:3]))
 
+        # With 3 to 5 features a rank correlation is a weak check, and this check compares one fitted model on two data splits, not refits.
         stability_rows.append({
             "task": task,
             "model": model_name,
+            "n_features": len(common_feats),
             "spearman_rho": float(rho),
-            "p_value": float(p_val),
             "top3_train": top3_train,
             "top3_test": top3_test,
         })
@@ -220,7 +221,7 @@ def run_explain_all() -> None:
     print("\n" + "=" * 70)
     print("SHAP RANK STABILITY (TRAIN VS TEST SPLIT)")
     print("=" * 70)
-    print(stability_df[["task", "model", "spearman_rho", "p_value", "top3_train", "top3_test"]].to_string(index=False))
+    print(stability_df[["task", "model", "n_features", "spearman_rho", "top3_train", "top3_test"]].to_string(index=False))
     print("=" * 70)
 
 

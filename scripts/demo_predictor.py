@@ -22,6 +22,7 @@ if str(SRC_DIR) not in sys.path:
 
 import json
 from pocketpilot import config
+from pocketpilot.inference.formatting import format_clock
 from pocketpilot.inference.predictor import load_artifacts, will_i_make_it
 
 EVIDENCE_FILE = config.PROJECT_ROOT / "reports" / "testing_evidence" / "predictor_demo.txt"
@@ -66,10 +67,10 @@ def format_demo_output() -> str:
 
     lines.append(f"Device: {inputs_1['device_model']} | App Usage: {inputs_1['app_usage_min']} min | "
                  f"Screen: {inputs_1['screen_on_hours']} h | Apps: {inputs_1['apps_installed']}")
-    lines.append(f"Battery State: {survival_1['current_battery_pct']}% at {survival_1['current_hour']:.1f}:00 | "
-                 f"Target: {survival_1['need_until_hour']:.1f}:00 | Min Reserve: {survival_1['min_battery_pct']}% | "
+    lines.append(f"Battery State: {survival_1['current_battery_pct']}% at {format_clock(survival_1['current_hour'])} | "
+                 f"Target: {format_clock(survival_1['need_until_hour'])} | Min Reserve: {survival_1['min_battery_pct']}% | "
                  f"Capacity: {survival_1['battery_capacity_mah']} mAh")
-    lines.append(f"Budgets: Battery={extra_budgets_1['battery_mah']} mAh, Data={extra_budgets_1['data_mb']} MB, "
+    lines.append(f"Budgets (User-Specified): Battery={extra_budgets_1['battery_mah']} mAh, Data={extra_budgets_1['data_mb']} MB, "
                  f"Screen={extra_budgets_1['screen_hours']} h")
     lines.append("")
 
@@ -84,17 +85,19 @@ def format_demo_output() -> str:
     f_1 = res_1["forecast"]["predictions"]
     r_1 = res_1["forecast"]["risk"]
     s_1 = res_1["survival"]
+    b_used_1 = res_1["budgets_used"]
 
     lines.append("1. FORECAST & RISK:")
     lines.append(f"   * Battery Drain: {f_1['battery_mah']:.1f} mAh (Overrun Risk: {r_1['battery']['level']}, P(overrun)={r_1['battery']['p_overrun']*100:.1f}%)")
     lines.append(f"   * Data Usage:    {f_1['data_mb']:.1f} MB (Overrun Risk: {r_1['data']['level']}, P(overrun)={r_1['data']['p_overrun']*100:.1f}%)")
     lines.append(f"   * Screen Time:   {f_1['screen_hours']:.1f} h (Overrun Risk: {r_1['screen_time']['level']}, P(overrun)={r_1['screen_time']['p_overrun']*100:.1f}%)")
+    lines.append(f"   * Budgets Actually Evaluated: Battery={b_used_1['battery_mah']:.1f} mAh (equivalent daily budget), Data={b_used_1['data_mb']:.1f} MB, Screen={b_used_1['screen_hours']:.1f} h")
     lines.append("")
     lines.append("2. BATTERY SURVIVAL:")
     lines.append(f"   * Usable Capacity:       {s_1['usable_mah']:.1f} mAh")
     lines.append(f"   * Hourly Drain Rate:     {s_1['hourly_rate']:.1f} mAh/h (over {config.WAKING_HOURS} waking hours)")
     lines.append(f"   * Expected Survival:     {s_1['hours_until_threshold']:.1f} hours [80% Interval: {s_1['hours_until_lower']:.1f} - {s_1['hours_until_upper']:.1f} h]")
-    lines.append(f"   * Duration Needed:       {s_1['hours_needed']:.1f} hours (until {survival_1['need_until_hour']:.1f}:00)")
+    lines.append(f"   * Duration Needed:       {s_1['hours_needed']:.1f} hours (until {format_clock(survival_1['need_until_hour'])})")
     lines.append(f"   * Equivalent Daily Cap:  {s_1['equivalent_daily_budget_mah']:.1f} mAh")
     lines.append(f"   * P(make it):            {s_1['p_make_it']*100:.1f}%")
     lines.append(f"   * Expected to Make It:   {s_1['expected_to_make_it']}")
@@ -132,10 +135,10 @@ def format_demo_output() -> str:
 
     lines.append(f"Device: {inputs_2['device_model']} | App Usage: {inputs_2['app_usage_min']} min | "
                  f"Screen: {inputs_2['screen_on_hours']} h | Apps: {inputs_2['apps_installed']}")
-    lines.append(f"Battery State: {survival_2['current_battery_pct']}% at {survival_2['current_hour']:.1f}:00 | "
-                 f"Target: {survival_2['need_until_hour']:.1f}:00 | Min Reserve: {survival_2['min_battery_pct']}% | "
+    lines.append(f"Battery State: {survival_2['current_battery_pct']}% at {format_clock(survival_2['current_hour'])} | "
+                 f"Target: {format_clock(survival_2['need_until_hour'])} | Min Reserve: {survival_2['min_battery_pct']}% | "
                  f"Capacity: {survival_2['battery_capacity_mah']} mAh")
-    lines.append(f"Budgets: Battery={extra_budgets_2['battery_mah']} mAh, Data={extra_budgets_2['data_mb']} MB, "
+    lines.append(f"Budgets (User-Specified): Battery={extra_budgets_2['battery_mah']} mAh, Data={extra_budgets_2['data_mb']} MB, "
                  f"Screen={extra_budgets_2['screen_hours']} h")
     lines.append("")
 
@@ -150,17 +153,19 @@ def format_demo_output() -> str:
     f_2 = res_2["forecast"]["predictions"]
     r_2 = res_2["forecast"]["risk"]
     s_2 = res_2["survival"]
+    b_used_2 = res_2["budgets_used"]
 
     lines.append("1. FORECAST & RISK:")
     lines.append(f"   * Battery Drain: {f_2['battery_mah']:.1f} mAh (Overrun Risk: {r_2['battery']['level']}, P(overrun)={r_2['battery']['p_overrun']*100:.1f}%)")
     lines.append(f"   * Data Usage:    {f_2['data_mb']:.1f} MB (Overrun Risk: {r_2['data']['level']}, P(overrun)={r_2['data']['p_overrun']*100:.1f}%)")
     lines.append(f"   * Screen Time:   {f_2['screen_hours']:.1f} h (Overrun Risk: {r_2['screen_time']['level']}, P(overrun)={r_2['screen_time']['p_overrun']*100:.1f}%)")
+    lines.append(f"   * Budgets Actually Evaluated: Battery={b_used_2['battery_mah']:.1f} mAh (equivalent daily budget), Data={b_used_2['data_mb']:.1f} MB, Screen={b_used_2['screen_hours']:.1f} h")
     lines.append("")
     lines.append("2. BATTERY SURVIVAL:")
     lines.append(f"   * Usable Capacity:       {s_2['usable_mah']:.1f} mAh")
     lines.append(f"   * Hourly Drain Rate:     {s_2['hourly_rate']:.1f} mAh/h (over {config.WAKING_HOURS} waking hours)")
     lines.append(f"   * Expected Survival:     {s_2['hours_until_threshold']:.1f} hours [80% Interval: {s_2['hours_until_lower']:.1f} - {s_2['hours_until_upper']:.1f} h]")
-    lines.append(f"   * Duration Needed:       {s_2['hours_needed']:.1f} hours (until {survival_2['need_until_hour']:.1f}:00)")
+    lines.append(f"   * Duration Needed:       {s_2['hours_needed']:.1f} hours (until {format_clock(survival_2['need_until_hour'])})")
     lines.append(f"   * Equivalent Daily Cap:  {s_2['equivalent_daily_budget_mah']:.1f} mAh")
     lines.append(f"   * P(make it):            {s_2['p_make_it']*100:.1f}%")
     lines.append(f"   * Expected to Make It:   {s_2['expected_to_make_it']}")
