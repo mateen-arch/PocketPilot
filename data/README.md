@@ -19,4 +19,15 @@
 - **File**: `data/raw/mobile_app_usage_screen_time.csv`, 10,000 rows x 34 columns.
 - **Documentation**: `docs/datasets/`.
 - **Provenance**: Fully synthetic (stated by the author).
-- One row is one user-app usage
+- **Row meaning**: one row is one user-app usage record. There is NO user ID column, so multi-day user history cannot be built from this dataset.
+- **Loading warning**: the text value "None" in column `sleep_disruption_from_phone` (2,767 rows) is a real category, not a missing value. Pandas converts it to NaN by default, so always load this file with `keep_default_na=False` (or equivalent).
+- **Known limitations found during profiling**:
+  - `battery_drain_pct_per_session` is a percentage per session (not mAh) and is statistically unrelated to every other column, so it is NOT usable as a battery target.
+  - `network_connection` and `notifications_received_per_day` show no relationship with data usage or screen time, so Wi-Fi-shift and notification effects cannot be learned from this dataset.
+  - Its documentation claims about 180 minutes average daily screen time, but the actual mean is about 85.5 minutes.
+  - App category carries real signal for data usage and screen time.
+- **Role in PocketPilot**: not used to train the battery or data-usage models. Optional use only for a category-level data/screen-time estimate.
+
+## Limitations
+
+Both datasets are simulated daily aggregates. They contain no minute-by-minute telemetry, no per-app battery consumption and no individual time series, so results describe patterns in simulated data and not real-world phone behavior.
