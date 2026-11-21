@@ -1,0 +1,3 @@
+"""
+PocketPilot Streamlit application package.
+"""

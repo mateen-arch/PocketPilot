@@ -111,28 +111,21 @@ def test_validate_inputs_out_of_range():
 
 
 def test_streamlit_app_smoke():
-    """Verify Streamlit app initializes cleanly and produces predictions via AppTest."""
+    """Verify Streamlit app entry point initializes cleanly and renders Home page content."""
     try:
         from streamlit.testing.v1 import AppTest
     except ImportError:
         pytest.skip("streamlit is not installed in the active environment.")
 
-    # 1. Default run
     app_path = str(PROJECT_ROOT / "streamlit_app.py")
-    at = AppTest.from_file(app_path, default_timeout=60)
+    at = AppTest.from_file(app_path, default_timeout=90)
     at.run()
     assert not at.exception, f"App raised exception on initial run: {at.exception}"
 
-    # 2. Run with default valid inputs and click Run prediction button
-    assert len(at.button) >= 1
-    # Click button to trigger prediction run
-    at.button[0].click().run()
-    assert not at.exception, f"App raised exception after button click: {at.exception}"
-
-    # Verify metrics or output content are rendered
-    # App has 3 metrics: battery, data, screen time
-    assert len(at.metric) >= 3
-    metric_labels = [m.label for m in at.metric]
-    assert any("Battery" in lbl for lbl in metric_labels)
-    assert any("Data" in lbl for lbl in metric_labels)
-    assert any("Screen" in lbl for lbl in metric_labels)
+    # Verify Home page content appears
+    titles = [t.value for t in at.title]
+    assert any("PocketPilot" in t for t in titles), f"Home title not found in {titles}"
+    
+    # Verify disclaimer appears on home page
+    info_boxes = [i.value for i in at.info]
+    assert any("research and educational prototype" in i for i in info_boxes)

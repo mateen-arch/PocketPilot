@@ -3,6 +3,7 @@ Configuration constants, dataset schemas, file paths, and random seeds.
 """
 
 from pathlib import Path
+from typing import Any
 
 # Project root = two levels above this file (src/pocketpilot/config.py), so paths work from any working directory
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -106,4 +107,32 @@ WAKING_HOURS: float = 16.0  # ASSUMPTION: daily drain is spread evenly over waki
 DEFAULT_MIN_BATTERY_PCT: int = 15
 CAPACITY_RANGE_MAH: tuple[int, int] = (1000, 10000)
 UNCONSTRAINED_BUDGET: float = 1e9  # used to leave a resource unconstrained in the planner
+
+# Example user persona presets for interactive app pages
+PERSONAS: dict[str, dict[str, Any]] = {
+    "light": {
+        "label": "Light user (Pixel 5)",
+        "device_model": "Google Pixel 5",
+        "app_usage_min": 100,
+        "screen_on_hours": 2.5,
+        "apps_installed": 30,
+        "battery_capacity_mah": 3000,
+    },
+    "typical": {
+        "label": "Typical user (Galaxy S21)",
+        "device_model": "Samsung Galaxy S21",
+        "app_usage_min": 250,
+        "screen_on_hours": 5.0,
+        "apps_installed": 50,
+        "battery_capacity_mah": 4000,
+    },
+    "heavy": {
+        "label": "Heavy user (iPhone 12)",
+        "device_model": "iPhone 12",
+        "app_usage_min": 480,
+        "screen_on_hours": 9.0,
+        "apps_installed": 85,
+        "battery_capacity_mah": 3000,
+    },
+}
 

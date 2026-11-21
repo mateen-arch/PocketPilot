@@ -2,8 +2,10 @@
 Input validation utilities for PocketPilot inference and deployment apps.
 """
 
+import io
 from typing import Any
 import numpy as np
+import pandas as pd
 
 from pocketpilot.config import KNOWN_DEVICES
 
@@ -117,3 +119,95 @@ def validate_inputs(
             errors.append("Screen time budget must be a valid number.")
 
     return errors
+
+
+def parse_history_csv(
+    file_like_or_bytes: Any,
+    max_rows: int = 366,
+    max_bytes: int = 1_000_000,
+) -> pd.DataFrame:
+    """
+    Parse and validate an uploaded multi-day usage history CSV.
+
+    Parameters
+    ----------
+    file_like_or_bytes : file-like object, bytes, or str
+        Uploaded CSV data.
+    max_rows : int, default=366
+        Maximum allowed row count.
+    max_bytes : int, default=1_000_000
+        Maximum allowed raw file size in bytes (1 MB).
+
+    Returns
+    -------
+    pd.DataFrame
+        Clean DataFrame with lowercased column names and parsed dates if present.
+
+    Raises
+    ------
+    ValueError
+        If file exceeds size, is empty, has missing columns, non-numeric or non-positive
+        values, invalid dates, or exceeds max_rows.
+    """
+    if isinstance(file_like_or_bytes, bytes):
+        raw_bytes = file_like_or_bytes
+        stream = io.BytesIO(raw_bytes)
+    elif hasattr(file_like_or_bytes, "read"):
+        raw_bytes = file_like_or_bytes.read()
+        if isinstance(raw_bytes, str):
+            raw_bytes = raw_bytes.encode("utf-8")
+        stream = io.BytesIO(raw_bytes)
+    elif isinstance(file_like_or_bytes, str):
+        raw_bytes = file_like_or_bytes.encode("utf-8")
+        stream = io.BytesIO(raw_bytes)
+    else:
+        raise ValueError(f"Unsupported input type for parse_history_csv: {type(file_like_or_bytes)}")
+
+    if len(raw_bytes) == 0:
+        raise ValueError("Uploaded CSV file is empty.")
+    if len(raw_bytes) > max_bytes:
+        raise ValueError(f"File size ({len(raw_bytes)} bytes) exceeds maximum limit of {max_bytes} bytes.")
+
+    try:
+        df = pd.read_csv(stream)
+    except Exception as exc:
+        raise ValueError(f"Failed to parse CSV file: {exc}") from exc
+
+    if len(df) == 0:
+        raise ValueError("Uploaded CSV contains no data rows.")
+    if len(df) > max_rows:
+        raise ValueError(f"Uploaded CSV has {len(df)} rows, exceeding maximum allowed limit of {max_rows} rows.")
+
+    # Normalize column names: strip and lowercase
+    raw_col_map = {col: str(col).strip().lower() for col in df.columns}
+    df = df.rename(columns=raw_col_map)
+
+    required_numeric = ["app_usage_min", "screen_on_hours", "battery_mah", "data_mb"]
+    missing = [c for c in required_numeric if c not in df.columns]
+    if missing:
+        raise ValueError(f"CSV is missing required column(s): {missing}. Required columns: {required_numeric}.")
+
+    # Validate and convert required numeric columns
+    for col in required_numeric:
+        try:
+            converted = pd.to_numeric(df[col], errors="raise")
+        except Exception as exc:
+            raise ValueError(f"Column '{col}' contains non-numeric values that could not be converted to numbers.") from exc
+
+        if converted.isna().any() or np.isinf(converted).any():
+            raise ValueError(f"Column '{col}' contains NaN or infinite values.")
+        if (converted <= 0).any():
+            raise ValueError(f"Column '{col}' contains non-positive values (<= 0). All daily usage metrics must be strictly positive.")
+        df[col] = converted
+
+    # Check for optional date column
+    date_cols = [c for c in df.columns if c in ("date", "timestamp", "datetime", "day")]
+    if date_cols:
+        d_col = date_cols[0]
+        try:
+            df[d_col] = pd.to_datetime(df[d_col], errors="raise")
+        except Exception as exc:
+            raise ValueError(f"Column '{d_col}' contains invalid or unparseable date values.") from exc
+
+    return df
+
