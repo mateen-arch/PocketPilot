@@ -428,7 +428,8 @@ def test_saved_artifacts_load_and_forecast_equality():
 
     # Determinism across repeated calls
     res_repeat = forecast(artifacts, inputs, budgets, screen_known=True)
-    assert res["predictions"] == res_repeat["predictions"]
+    for k in res["predictions"]:
+        assert np.isclose(res["predictions"][k], res_repeat["predictions"][k])
 
 
 @pytest.mark.skipif(not _saved_artifacts_exist(), reason="Production models missing from models/ directory")

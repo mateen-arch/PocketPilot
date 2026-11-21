@@ -39,6 +39,9 @@ PocketPilot/
 │       ├── gauges.py
 │       ├── input_forms.py
 │       └── charts.py
+├── scripts/
+│   ├── run_eda.py
+│   └── trace_input.py
 └── src/
     └── pocketpilot/
         ├── __init__.py

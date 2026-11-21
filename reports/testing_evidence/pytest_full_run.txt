@@ -1,6 +1,6 @@
 ======================================================================
 POCKETPILOT TEST EXECUTION EVIDENCE
-Timestamp (UTC): 2026-11-21T17:51:56.959275+00:00
+Timestamp (UTC): 2026-11-21T18:08:48.626699+00:00
 Python: 3.12.10 (D:\Mateen\PocketPilot\.venv_check\Scripts\python.exe)
 scikit-learn: 1.9.1
 xgboost: 3.4.1
@@ -8,13 +8,13 @@ pandas: 2.2.3
 numpy: 2.5.3
 streamlit: 1.67.0
 ======================================================================
-........................................................................ [ 67%]
-...................................                                      [100%]
+........................................................................ [ 66%]
+.....................................                                    [100%]
 =================================== PASSES ====================================
 ___________________________ test_page_1_default_run ___________________________
 ---------------------------- Captured stderr call -----------------------------
-2026-11-21 22:52:00.125 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-11-21 22:52:00.332 
+2026-11-21 23:08:55.368 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 23:08:56.622 
 'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
 Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
 upload routes, which stay pinned to the app address and still require a valid
@@ -35,33 +35,33 @@ WebSocket connection.
 WARNING  streamlit.runtime.scriptrunner_utils.script_run_context:script_run_context.py:522 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 _____________________ test_page_1_typical_user_execution ______________________
 ---------------------------- Captured stderr call -----------------------------
-2026-11-21 22:52:00.855 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-11-21 22:52:01.238 Please replace `use_container_width` with `width`.
+2026-11-21 23:08:57.500 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 23:08:57.964 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:01.249 Please replace `use_container_width` with `width`.
+2026-11-21 23:08:57.988 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:01.256 Please replace `use_container_width` with `width`.
+2026-11-21 23:08:57.990 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:01.334 Please replace `use_container_width` with `width`.
+2026-11-21 23:08:58.214 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:01.416 Please replace `use_container_width` with `width`.
+2026-11-21 23:08:58.265 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:01.472 Please replace `use_container_width` with `width`.
+2026-11-21 23:08:58.307 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
@@ -100,38 +100,38 @@ WARNING  streamlit.deprecation_util:deprecation_util.py:81 Please replace `use_c
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
 ____________________ test_page_1_depleted_battery_boundary ____________________
 ---------------------------- Captured stderr call -----------------------------
-2026-11-21 22:52:01.482 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 23:08:58.314 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ------------------------------ Captured log call ------------------------------
 WARNING  streamlit.runtime.scriptrunner_utils.script_run_context:script_run_context.py:522 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 _____________________ test_page_1_estimate_screen_toggle ______________________
 ---------------------------- Captured stderr call -----------------------------
-2026-11-21 22:52:01.773 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-11-21 22:52:02.110 Please replace `use_container_width` with `width`.
+2026-11-21 23:08:58.574 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 23:08:58.881 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:02.118 Please replace `use_container_width` with `width`.
+2026-11-21 23:08:58.892 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:02.127 Please replace `use_container_width` with `width`.
+2026-11-21 23:08:58.899 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:02.191 Please replace `use_container_width` with `width`.
+2026-11-21 23:08:58.959 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:02.274 Please replace `use_container_width` with `width`.
+2026-11-21 23:08:59.041 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:02.331 Please replace `use_container_width` with `width`.
+2026-11-21 23:08:59.096 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
@@ -170,33 +170,33 @@ WARNING  streamlit.deprecation_util:deprecation_util.py:81 Please replace `use_c
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
 ___________________________ test_page_2_default_run ___________________________
 ---------------------------- Captured stderr call -----------------------------
-2026-11-21 22:52:02.341 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 23:08:59.105 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ------------------------------ Captured log call ------------------------------
 WARNING  streamlit.runtime.scriptrunner_utils.script_run_context:script_run_context.py:522 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 _______________________ test_page_2_valid_goal_verdict ________________________
 ---------------------------- Captured stderr call -----------------------------
-2026-11-21 22:52:02.584 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 23:08:59.372 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ------------------------------ Captured log call ------------------------------
 WARNING  streamlit.runtime.scriptrunner_utils.script_run_context:script_run_context.py:522 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ______________________ test_page_2_already_violated_goal ______________________
 ---------------------------- Captured stderr call -----------------------------
-2026-11-21 22:52:03.055 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 23:08:59.900 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ------------------------------ Captured log call ------------------------------
 WARNING  streamlit.runtime.scriptrunner_utils.script_run_context:script_run_context.py:522 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 _________________ test_page_2_impossible_goal_not_achievable __________________
 ---------------------------- Captured stderr call -----------------------------
-2026-11-21 22:52:03.356 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 23:09:00.183 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ------------------------------ Captured log call ------------------------------
 WARNING  streamlit.runtime.scriptrunner_utils.script_run_context:script_run_context.py:522 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ___________________________ test_page_3_default_run ___________________________
 ---------------------------- Captured stderr call -----------------------------
-2026-11-21 22:52:03.806 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 23:09:00.610 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ------------------------------ Captured log call ------------------------------
 WARNING  streamlit.runtime.scriptrunner_utils.script_run_context:script_run_context.py:522 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 _______________________ test_page_3_manual_entry_valid ________________________
 ---------------------------- Captured stderr call -----------------------------
-2026-11-21 22:52:04.130 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-11-21 22:52:04.446 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:00.882 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 23:09:01.357 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
@@ -210,243 +210,243 @@ WARNING  streamlit.deprecation_util:deprecation_util.py:81 Please replace `use_c
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
 ______________________ test_page_3_negative_input_error _______________________
 ---------------------------- Captured stderr call -----------------------------
-2026-11-21 22:52:04.459 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 23:09:01.393 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ------------------------------ Captured log call ------------------------------
 WARNING  streamlit.runtime.scriptrunner_utils.script_run_context:script_run_context.py:522 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ____________________ test_page_4_renders_without_exception ____________________
 ---------------------------- Captured stderr call -----------------------------
-2026-11-21 22:52:04.649 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-11-21 22:52:04.897 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:01.633 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 23:09:01.854 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:04.898 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:01.857 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:04.968 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.064 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:04.968 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.208 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:04.971 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.233 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:04.977 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.237 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:04.980 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.238 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.046 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.322 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.047 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.341 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.049 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.361 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.052 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.364 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.054 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.365 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.124 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.431 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.125 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.433 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.127 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.436 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.131 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.459 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.131 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.460 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.133 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.487 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.134 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.531 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.136 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.531 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.137 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.561 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.138 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.576 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.140 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.577 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.141 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.595 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.142 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.616 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.145 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.640 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.147 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.642 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.235 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.788 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.238 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.793 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.240 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.797 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.242 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.798 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.369 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:02.967 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.455 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.034 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.458 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.069 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.460 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.071 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.534 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.174 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.537 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.278 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.537 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.280 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.538 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.288 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.540 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.289 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.542 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.292 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.544 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.295 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.546 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.297 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.643 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.400 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.750 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.604 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.753 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.607 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
-2026-11-21 22:52:05.961 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.820 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
@@ -690,8 +690,8 @@ WARNING  streamlit.deprecation_util:deprecation_util.py:81 Please replace `use_c
 For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
 __________________________ test_streamlit_app_smoke ___________________________
 ---------------------------- Captured stderr call -----------------------------
-2026-11-21 22:52:05.991 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-11-21 22:52:06.218 Please replace `use_container_width` with `width`.
+2026-11-21 23:09:03.848 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 23:09:04.078 Please replace `use_container_width` with `width`.
 
 `use_container_width` will be removed after 2025-12-31.
 
@@ -811,4 +811,6 @@ PASSED tests/test_shap.py::test_mean_abs_importance
 PASSED tests/test_shap.py::test_explain_one
 PASSED tests/test_shap.py::test_linear_model_raises_value_error
 PASSED tests/test_shap.py::test_shap_determinism
-107 passed in 42.41s
+PASSED tests/test_trace.py::test_trace_battery_pipeline
+PASSED tests/test_trace.py::test_trace_screen_time_pipeline_no_screen_or_share
+109 passed in 50.18s

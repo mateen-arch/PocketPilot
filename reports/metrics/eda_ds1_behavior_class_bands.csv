@@ -1,0 +1,6 @@
+behavior_class,count,app_usage_min_min,app_usage_min_max,app_usage_min_mean,screen_on_hours_min,screen_on_hours_max,screen_on_hours_mean,battery_mah_min,battery_mah_max,battery_mah_mean,data_mb_min,data_mb_max,data_mb_mean
+1,136,30,89,60.43,1.0,2.0,1.49,302,594,454.98,102,299,202.32
+2,146,91,179,131.97,2.0,4.0,3.04,602,1198,883.81,301,599,451.42
+3,143,181,299,235.4,4.0,6.0,4.96,1210,1791,1515.06,608,997,822.01
+4,139,301,478,395.75,6.0,7.9,6.91,1802,2398,2105.81,1002,1499,1232.23
+5,136,481,598,541.42,8.1,12.0,10.11,2403,2993,2701.01,1508,2497,1974.77

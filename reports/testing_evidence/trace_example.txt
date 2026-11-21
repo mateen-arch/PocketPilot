@@ -1,0 +1,98 @@
+=======================================================================
+POCKETPILOT INFERENCE PIPELINE TRACE REPORT (VIVA AUDIT TOOL)
+=======================================================================
+Device: Samsung Galaxy S21 | App Usage: 250.0 min | Screen: 5.0 h | Apps: 50
+
+
+===========================================================================
+PIPELINE EXECUTION TRACE: BATTERY (mAh)
+===========================================================================
+Raw Input DataFrame:
+  - device_model: Samsung Galaxy S21
+  - app_usage_min: 250.0
+  - screen_on_hours: 5.0
+  - apps_installed: 50
+
+Stage 1: Step 'engineer' [FunctionTransformer]
+  Action:       Adds the derived column app_share_of_screen from raw inputs.
+  Output Type:  DataFrame
+  Output Shape: (1, 5)
+  Features (5): ['device_model', 'app_usage_min', 'screen_on_hours', 'apps_installed', 'app_share_of_screen']
+  Output Values (Row 0):
+    * device_model: Samsung Galaxy S21
+    * app_usage_min: 250.0
+    * screen_on_hours: 5.0
+    * apps_installed: 50
+    * app_share_of_screen: 0.8333
+---------------------------------------------------------------------------
+Stage 2: Step 'preprocessor' [ColumnTransformer]
+  Action:       One-hot encodes device_model and passes or scales numeric columns.
+  Output Type:  ndarray
+  Output Shape: (1, 9)
+  Features (9): ['device_model_Google Pixel 5', 'device_model_OnePlus 9', 'device_model_Samsung Galaxy S21', 'device_model_Xiaomi Mi 11', 'device_model_iPhone 12', 'app_usage_min', 'screen_on_hours', 'apps_installed', 'app_share_of_screen']
+  Output Values (Row 0):
+    * device_model_Google Pixel 5: 0.0
+    * device_model_OnePlus 9: 0.0
+    * device_model_Samsung Galaxy S21: 1.0
+    * device_model_Xiaomi Mi 11: 0.0
+    * device_model_iPhone 12: 0.0
+    * app_usage_min: 250.0
+    * screen_on_hours: 5.0
+    * apps_installed: 50.0
+    * app_share_of_screen: 0.8333
+---------------------------------------------------------------------------
+Stage 3: Step 'model' [XGBRegressor]
+  Action:       Predicts daily battery in mAh from processed features.
+  Output Type:  ndarray
+  Output Shape: (1,)
+  Features (1): ['prediction']
+  Output Values (Row 0):
+    * prediction: 1524.899
+---------------------------------------------------------------------------
+FINAL PREDICTION (battery): 1524.90 mAh
+
+BUDGET & UNCERTAINTY RISK ASSESSMENT:
+  Operational Budget: 1800.0 mAh
+  Categorical Risk:   Watch
+  P(Overrun):         9% (0.0875)
+  80% Interval:       1194.2 to 1786.6 mAh
+===========================================================================
+
+===========================================================================
+PIPELINE EXECUTION TRACE: SCREEN_TIME (hours)
+===========================================================================
+Raw Input DataFrame:
+  - device_model: Samsung Galaxy S21
+  - app_usage_min: 250.0
+  - apps_installed: 50
+
+Stage 1: Step 'preprocessor' [ColumnTransformer]
+  Action:       One-hot encodes device_model and passes or scales numeric columns.
+  Output Type:  ndarray
+  Output Shape: (1, 7)
+  Features (7): ['device_model_Google Pixel 5', 'device_model_OnePlus 9', 'device_model_Samsung Galaxy S21', 'device_model_Xiaomi Mi 11', 'device_model_iPhone 12', 'app_usage_min', 'apps_installed']
+  Output Values (Row 0):
+    * device_model_Google Pixel 5: 0.0
+    * device_model_OnePlus 9: 0.0
+    * device_model_Samsung Galaxy S21: 1.0
+    * device_model_Xiaomi Mi 11: 0.0
+    * device_model_iPhone 12: 0.0
+    * app_usage_min: 250.0
+    * apps_installed: 50.0
+---------------------------------------------------------------------------
+Stage 2: Step 'model' [XGBRegressor]
+  Action:       Predicts daily screen_time in hours from processed features.
+  Output Type:  ndarray
+  Output Shape: (1,)
+  Features (1): ['prediction']
+  Output Values (Row 0):
+    * prediction: 5.0266
+---------------------------------------------------------------------------
+FINAL PREDICTION (screen_time): 5.03 hours
+
+BUDGET & UNCERTAINTY RISK ASSESSMENT:
+  Operational Budget: 6.0 hours
+  Categorical Risk:   Watch
+  P(Overrun):         10% (0.1000)
+  80% Interval:       4.0 to 6.0 hours
+===========================================================================

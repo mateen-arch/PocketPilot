@@ -1,0 +1,12 @@
+fact,value,details
+rows,10000,Total record count in Dataset 2
+columns,34,Total column count in Dataset 2
+sleep_disruption_none_text_count,2767,Rows containing string 'None' (real category)
+sleep_disruption_nan_count,0,Rows containing NaN in sleep disruption (must be 0)
+mean_daily_screen_time_minutes,85.5,Mean daily screen time across users (minutes)
+max_battery_drain_numeric_corr_col,sessions_per_day,Numeric column with highest absolute correlation to battery drain
+max_battery_drain_numeric_corr_val,0.014086,Pearson correlation coefficient r with battery drain
+highest_mean_data_used_app_category,Entertainment/Streaming,Mean 781.28 MB/day
+lowest_mean_data_used_app_category,Finance/Banking,Mean 21.53 MB/day
+mean_data_used_mb_wifi,216.25,Mean daily data on WiFi (MB/day)
+mean_data_used_mb_4g_lte,213.65,Mean daily data on 4G/LTE (MB/day)
