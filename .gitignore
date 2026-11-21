@@ -47,3 +47,6 @@ desktop.ini
 # Required project tracking: do NOT ignore models/ or data/
 !models/
 !data/
+
+# Model candidates are temporary benchmarks; only selected models and metadata.json are committed
+models/candidates/

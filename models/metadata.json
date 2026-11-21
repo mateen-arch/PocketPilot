@@ -1,0 +1,92 @@
+{
+  "battery": {
+    "selected_model": "xgboost",
+    "best_params": {
+      "model__learning_rate": 0.03,
+      "model__max_depth": 2,
+      "model__n_estimators": 200
+    },
+    "raw_features": [
+      "device_model",
+      "app_usage_min",
+      "screen_on_hours",
+      "apps_installed"
+    ],
+    "forecast_features": [
+      "device_model",
+      "app_usage_min",
+      "screen_on_hours",
+      "apps_installed",
+      "app_share_of_screen"
+    ],
+    "cv_mae_mean": 143.4767272949219,
+    "cv_mae_std": 10.049880556877188,
+    "test_metrics": {
+      "mae": 154.66932503836495,
+      "rmse": 182.41619619993511,
+      "r2": 0.9493709315827381
+    },
+    "sklearn_version": "1.9.1",
+    "random_seed": 42,
+    "training_date": "2026-11-21T15:03:56.782428+00:00"
+  },
+  "data": {
+    "selected_model": "random_forest",
+    "best_params": {
+      "model__max_depth": 8,
+      "model__min_samples_leaf": 1,
+      "model__n_estimators": 200
+    },
+    "raw_features": [
+      "device_model",
+      "app_usage_min",
+      "screen_on_hours",
+      "apps_installed"
+    ],
+    "forecast_features": [
+      "device_model",
+      "app_usage_min",
+      "screen_on_hours",
+      "apps_installed",
+      "app_share_of_screen"
+    ],
+    "cv_mae_mean": 134.0737090439033,
+    "cv_mae_std": 10.230493022985762,
+    "test_metrics": {
+      "mae": 111.8536593492326,
+      "rmse": 145.86680325247082,
+      "r2": 0.9432034325496389
+    },
+    "sklearn_version": "1.9.1",
+    "random_seed": 42,
+    "training_date": "2026-11-21T15:04:13.287745+00:00"
+  },
+  "screen_time": {
+    "selected_model": "xgboost",
+    "best_params": {
+      "model__learning_rate": 0.03,
+      "model__max_depth": 2,
+      "model__n_estimators": 200
+    },
+    "raw_features": [
+      "device_model",
+      "app_usage_min",
+      "apps_installed"
+    ],
+    "forecast_features": [
+      "device_model",
+      "app_usage_min",
+      "apps_installed"
+    ],
+    "cv_mae_mean": 0.5686425171153886,
+    "cv_mae_std": 0.05802568489584712,
+    "test_metrics": {
+      "mae": 0.6072570771830422,
+      "rmse": 0.7599655874456253,
+      "r2": 0.9370605447997735
+    },
+    "sklearn_version": "1.9.1",
+    "random_seed": 42,
+    "training_date": "2026-11-21T15:04:28.453198+00:00"
+  }
+}
