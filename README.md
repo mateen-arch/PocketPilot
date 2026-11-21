@@ -97,7 +97,17 @@ source venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
+```
 
-# Run Streamlit application
+### Run the App
+Run locally from the project root using Python 3.12.10:
+```bash
 streamlit run streamlit_app.py
 ```
+
+### Deploying to Streamlit Community Cloud
+To deploy PocketPilot to Streamlit Community Cloud:
+- **Repository**: Your GitHub repository (`PocketPilot`)
+- **Branch**: `main`
+- **Main file path**: `streamlit_app.py`
+- **Advanced settings**: Select Python version `3.12` (matching tested 3.12.10 environment).
