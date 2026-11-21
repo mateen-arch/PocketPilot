@@ -86,3 +86,18 @@ INTERVAL_LEVELS: tuple[float, float] = (0.8, 0.9)
 BUDGET_PERCENTILES: tuple[int, ...] = (20, 35, 50, 65, 80)
 HETEROSCEDASTICITY_RHO_THRESHOLD: float = 0.2
 OVERRUN_PROB_DECISION: float = 0.5
+
+# What-if planner levers and parameters
+PLANNER_APP_CUTS: tuple[int, ...] = (0, 15, 30, 45, 60, 90, 120)   # minutes of app use removed
+PLANNER_SCREEN_CUTS: tuple[float, ...] = (0.0, 0.5, 1.0, 2.0)         # additional hours of screen-on time removed
+PLANNER_WIFI_SHARES: tuple[float, ...] = (0.0, 0.2, 0.4, 0.6)          # ASSUMPTION: share of mobile data moved to Wi-Fi
+POWER_SAVING_BATTERY_MULTIPLIER: float = 0.85              # ASSUMPTION: not learned from data, configurable
+
+# Action-cost weights: design choices reflecting user convenience penalty, not learned from data
+W1_MINUTES: float = 1.0
+W2_POWER_SAVING: float = 20.0
+W3_WIFI_PER_PCT_POINT: float = 0.5
+
+PLANNER_TOP_N: int = 5
+PLANNER_BUDGET_SETTINGS: dict[str, int] = {"tight": 35, "moderate": 50, "loose": 65}   # train-target percentiles used for evaluation only
+

@@ -1,0 +1,4 @@
+user_persona,device_model,app_usage_min,screen_on_hours,apps_installed,status,baseline_bat_pred,baseline_data_pred,baseline_screen_pred,plan_app_cut_min,plan_screen_cut_hours,plan_wifi_share,plan_power_saving,plan_action_cost,post_bat_pred,post_data_pred,post_screen_pred,bat_p_overrun,data_p_overrun,screen_p_overrun
+light,Google Pixel 5,100,2.5,30,already_within_budget,844.6,442.8,2.5,0,0.0,0.0,False,0.0,844.6,442.8,2.5,0.0018,0.0018,0.0018
+typical,Samsung Galaxy S21,250,5.0,50,already_within_budget,1524.9,822.4,5.0,0,0.0,0.0,False,0.0,1524.9,822.4,5.0,0.0875,0.1464,0.0964
+heavy,iPhone 12,480,9.0,85,not_achievable,2679.8,1973.2,9.0,15,2.0,0.4,True,175.0,1858.7,937.9,6.72,0.5786,0.3714,0.7411
