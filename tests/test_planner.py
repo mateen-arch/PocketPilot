@@ -448,3 +448,82 @@ def test_determinism_and_immutability(planner_setup):
     assert res1["best"]["wifi_share"] == res2["best"]["wifi_share"]
     assert res1["best"]["power_saving"] == res2["best"]["power_saving"]
     assert np.isclose(res1["best"]["battery_pred"], res2["best"]["battery_pred"])
+
+
+def test_bounded_screen_follow_through(planner_setup):
+    """Verify that delta_screen is strictly bounded between -app_cut_min/60 and 0 inclusive."""
+    pipelines = planner_setup["pipelines"]
+    bounds = planner_setup["bounds"]
+
+    base = {
+        "device_model": "Samsung Galaxy S21",
+        "app_usage_min": 450,
+        "screen_on_hours": 8.0,
+        "apps_installed": 60,
+    }
+
+    grid = build_scenario_grid()
+    eval_df = evaluate_scenarios(base, grid, pipelines, bounds)
+
+    # In words: cutting app time never raises screen time (delta <= 0),
+    # and never lowers it by more than the app time removed (delta >= -app_cut_min / 60).
+    min_allowed = -eval_df["app_cut_min"] / 60.0
+    assert (eval_df["delta_screen"] <= 1e-9).all()
+    assert (eval_df["delta_screen"] >= min_allowed - 1e-9).all()
+
+
+def test_allow_assumptions_false(planner_setup):
+    """Verify allow_assumptions=False restricts grid, emits mode 'learned_only', and uses 0 assumption levers."""
+    pipelines = planner_setup["pipelines"]
+    risk_bundles = planner_setup["risk_bundles"]
+    bounds = planner_setup["bounds"]
+
+    base = {
+        "device_model": "iPhone 12",
+        "app_usage_min": 400,
+        "screen_on_hours": 8.0,
+        "apps_installed": 70,
+    }
+
+    # 1. Solvable budget in learned-only mode
+    budgets_solvable = {"battery_mah": 2300.0, "data_mb": 1800.0, "screen_hours": 7.5}
+    res = recommend(base, budgets_solvable, pipelines, risk_bundles, bounds, allow_assumptions=False)
+    assert res["mode"] == "learned_only"
+    assert res["assumptions_used"] == []
+    assert res["n_evaluated"] == 28  # 7 app cuts x 4 screen cuts x 1 x 1
+    assert res["best"]["wifi_share"] == 0.0
+    assert res["best"]["power_saving"] is False
+    if not res["alternatives"].empty:
+        assert (res["alternatives"]["wifi_share"] == 0.0).all()
+        assert (~res["alternatives"]["power_saving"]).all()
+
+    # 2. Impossible budget triggering best-effort
+    budgets_tight = {"battery_mah": 100.0, "data_mb": 10.0, "screen_hours": 0.5}
+    res_tight = recommend(base, budgets_tight, pipelines, risk_bundles, bounds, allow_assumptions=False)
+    assert res_tight["status"] == "not_achievable"
+    assert res_tight["mode"] == "learned_only"
+    assert res_tight["assumptions_used"] == []
+    assert res_tight["n_evaluated"] == 28
+    assert res_tight["best"]["wifi_share"] == 0.0
+    assert res_tight["best"]["power_saving"] is False
+
+
+def test_default_call_retains_behavior_unbound(planner_setup):
+    """Verify default call retains mode 'all_levers' and identical plan for cases where bound does not bind."""
+    pipelines = planner_setup["pipelines"]
+    risk_bundles = planner_setup["risk_bundles"]
+    bounds = planner_setup["bounds"]
+
+    base_light = {
+        "device_model": "Google Pixel 5",
+        "app_usage_min": 100,
+        "screen_on_hours": 2.5,
+        "apps_installed": 30,
+    }
+    budgets = {"battery_mah": 1800.0, "data_mb": 1000.0, "screen_hours": 6.0}
+    res = recommend(base_light, budgets, pipelines, risk_bundles, bounds)
+    assert res["mode"] == "all_levers"
+    assert res["status"] == "already_within_budget"
+    assert res["best"]["app_cut_min"] == 0
+    assert res["best"]["action_cost"] == 0.0
+

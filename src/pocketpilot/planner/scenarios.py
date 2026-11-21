@@ -152,7 +152,16 @@ def evaluate_scenarios(
     })[TASK_RAW_INPUTS_MAP["screen_time"]]
 
     batch_screen_preds = pipelines["screen_time"].predict(screen_inputs_batch)
-    delta_screen = np.where(df["app_cut_min"].values == 0, 0.0, batch_screen_preds - base_screen_pred)
+    delta_screen_raw = np.where(df["app_cut_min"].values == 0, 0.0, batch_screen_preds - base_screen_pred)
+
+    # Bound the screen-time follow-through:
+    # delta_screen = min(0, max(delta_screen_raw, -app_cut_min / 60)).
+    # In words: cutting app time never raises screen time (delta <= 0),
+    # and never lowers it by more than the app time removed (delta >= -app_cut_min / 60).
+    # Why: the screen-time model is a tree model whose output is piecewise constant,
+    # so a small app cut can produce an implausibly large jump.
+    max_reduction = -df["app_cut_min"].values / 60.0
+    delta_screen = np.minimum(0.0, np.maximum(delta_screen_raw, max_reduction))
 
     # 3. New screen-on hours
     new_screen = base_screen - df["screen_cut_hours"].values + delta_screen
@@ -196,6 +205,8 @@ def evaluate_scenarios(
     # 6. Screen time prediction is new_screen
     screen_pred = new_screen
 
+    df["delta_screen_raw"] = delta_screen_raw
+    df["delta_screen"] = delta_screen
     df["new_app"] = new_app
     df["new_screen"] = new_screen
     df["battery_pred"] = battery_pred

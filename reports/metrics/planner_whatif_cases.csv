@@ -1,4 +1,9 @@
-user_persona,device_model,app_usage_min,screen_on_hours,apps_installed,status,baseline_bat_pred,baseline_data_pred,baseline_screen_pred,plan_app_cut_min,plan_screen_cut_hours,plan_wifi_share,plan_power_saving,plan_action_cost,post_bat_pred,post_data_pred,post_screen_pred,bat_p_overrun,data_p_overrun,screen_p_overrun
-light,Google Pixel 5,100,2.5,30,already_within_budget,844.6,442.8,2.5,0,0.0,0.0,False,0.0,844.6,442.8,2.5,0.0018,0.0018,0.0018
-typical,Samsung Galaxy S21,250,5.0,50,already_within_budget,1524.9,822.4,5.0,0,0.0,0.0,False,0.0,1524.9,822.4,5.0,0.0875,0.1464,0.0964
-heavy,iPhone 12,480,9.0,85,not_achievable,2679.8,1973.2,9.0,15,2.0,0.4,True,175.0,1858.7,937.9,6.72,0.5786,0.3714,0.7411
+user_persona,mode,device_model,app_usage_min,screen_on_hours,apps_installed,status,baseline_bat_pred,baseline_data_pred,baseline_screen_pred,plan_app_cut_min,plan_screen_cut_hours,plan_wifi_share,plan_power_saving,plan_action_cost,post_bat_pred,post_data_pred,post_screen_pred,bat_p_overrun,data_p_overrun,screen_p_overrun
+light,all_levers,Google Pixel 5,100,2.5,30,already_within_budget,844.6,442.8,2.5,0,0.0,0.0,False,0.0,844.6,442.8,2.5,0.0018,0.0018,0.0018
+light,learned_only,Google Pixel 5,100,2.5,30,already_within_budget,844.6,442.8,2.5,0,0.0,0.0,False,0.0,844.6,442.8,2.5,0.0018,0.0018,0.0018
+typical,all_levers,Samsung Galaxy S21,250,5.0,50,already_within_budget,1524.9,822.4,5.0,0,0.0,0.0,False,0.0,1524.9,822.4,5.0,0.0875,0.1464,0.0964
+typical,learned_only,Samsung Galaxy S21,250,5.0,50,already_within_budget,1524.9,822.4,5.0,0,0.0,0.0,False,0.0,1524.9,822.4,5.0,0.0875,0.1464,0.0964
+above_average,all_levers,Xiaomi Mi 11,350,6.5,65,plan_found,2103.5,1320.5,6.5,0,0.5,0.2,True,60.0,1675.3,991.3,6.0,0.3143,0.475,0.4982
+above_average,learned_only,Xiaomi Mi 11,350,6.5,65,not_achievable,2103.5,1320.5,6.5,60,0.0,0.0,False,60.0,1659.5,1050.0,5.5,0.2839,0.5839,0.2661
+heavy,all_levers,iPhone 12,480,9.0,85,not_achievable,2679.8,1973.2,9.0,30,2.0,0.4,True,190.0,1858.7,928.7,6.72,0.5786,0.3518,0.7411
+heavy,learned_only,iPhone 12,480,9.0,85,not_achievable,2679.8,1973.2,9.0,90,1.0,0.0,False,150.0,2131.8,1406.8,7.72,0.8536,0.925,0.9143

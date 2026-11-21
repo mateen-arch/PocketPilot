@@ -1,0 +1,29 @@
+persona,device_model,app_usage_min,app_cut_min,delta_screen_raw,delta_screen_bounded,bound_active
+light,Google Pixel 5,100,0,0.0,0.0,False
+light,Google Pixel 5,100,15,-1.1122,-0.25,True
+light,Google Pixel 5,100,30,-1.1122,-0.5,True
+light,Google Pixel 5,100,45,-1.1122,-0.75,True
+light,Google Pixel 5,100,60,-1.1122,-1.0,True
+light,Google Pixel 5,100,90,-1.1122,-1.1122,False
+light,Google Pixel 5,100,120,-1.1122,-1.1122,False
+typical,Samsung Galaxy S21,250,0,0.0,0.0,False
+typical,Samsung Galaxy S21,250,15,-0.1313,-0.1313,False
+typical,Samsung Galaxy S21,250,30,-0.1084,-0.1084,False
+typical,Samsung Galaxy S21,250,45,-0.1084,-0.1084,False
+typical,Samsung Galaxy S21,250,60,-0.0946,-0.0946,False
+typical,Samsung Galaxy S21,250,90,-1.9243,-1.5,True
+typical,Samsung Galaxy S21,250,120,-2.0158,-2.0,True
+above_average,Xiaomi Mi 11,350,0,0.0,0.0,False
+above_average,Xiaomi Mi 11,350,15,0.0,0.0,False
+above_average,Xiaomi Mi 11,350,30,0.0,0.0,False
+above_average,Xiaomi Mi 11,350,45,-0.3836,-0.3836,False
+above_average,Xiaomi Mi 11,350,60,-1.8959,-1.0,True
+above_average,Xiaomi Mi 11,350,90,-1.8959,-1.5,True
+above_average,Xiaomi Mi 11,350,120,-2.0116,-2.0,True
+heavy,iPhone 12,480,0,0.0,0.0,False
+heavy,iPhone 12,480,15,-0.2812,-0.25,True
+heavy,iPhone 12,480,30,-0.2812,-0.2812,False
+heavy,iPhone 12,480,45,-0.2812,-0.2812,False
+heavy,iPhone 12,480,60,-0.2812,-0.2812,False
+heavy,iPhone 12,480,90,-0.2812,-0.2812,False
+heavy,iPhone 12,480,120,-0.2812,-0.2812,False

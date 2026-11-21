@@ -1,0 +1,108 @@
+======================================================================
+POCKETPILOT TEST EXECUTION EVIDENCE
+Timestamp (UTC): 2026-11-21T16:51:39.602532+00:00
+Python: 3.12.10 (D:\Mateen\PocketPilot\.venv_check\Scripts\python.exe)
+scikit-learn: 1.9.1
+xgboost: 3.4.1
+pandas: 2.2.3
+numpy: 2.5.3
+streamlit: 1.67.0
+======================================================================
+................................................................         [100%]
+=================================== PASSES ====================================
+__________________________ test_streamlit_app_smoke ___________________________
+---------------------------- Captured stderr call -----------------------------
+2026-11-21 21:51:43.200 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 21:51:44.382 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+2026-11-21 21:51:44.900 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-11-21 21:51:45.272 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+=========================== short test summary info ===========================
+PASSED tests/test_app_smoke.py::test_validate_inputs_valid
+PASSED tests/test_app_smoke.py::test_validate_inputs_zero_budget
+PASSED tests/test_app_smoke.py::test_validate_inputs_negative_budget
+PASSED tests/test_app_smoke.py::test_validate_inputs_missing_values
+PASSED tests/test_app_smoke.py::test_validate_inputs_out_of_range
+PASSED tests/test_app_smoke.py::test_streamlit_app_smoke
+PASSED tests/test_clustering.py::test_clustering_feature_leakage_and_schema
+PASSED tests/test_clustering.py::test_fitted_scaler_uses_train_split_only
+PASSED tests/test_clustering.py::test_select_k_bounds_and_criterion
+PASSED tests/test_clustering.py::test_label_clusters_intensity_ordering
+PASSED tests/test_clustering.py::test_neutral_labels_terminology
+PASSED tests/test_clustering.py::test_predict_profile_validity_and_determinism
+PASSED tests/test_clustering.py::test_bundle_serialization_parity
+PASSED tests/test_clustering.py::test_predict_profile_validation_guards
+PASSED tests/test_clustering.py::test_percentile_report_range_and_extremes
+PASSED tests/test_data_pipeline.py::test_data_loaders_dimensions
+PASSED tests/test_data_pipeline.py::test_load_ds2_preserves_none_category
+PASSED tests/test_data_pipeline.py::test_clean_ds1_standards_and_immutability
+PASSED tests/test_data_pipeline.py::test_clean_ds1_validation_failure
+PASSED tests/test_data_pipeline.py::test_split_ds1_properties
+PASSED tests/test_models.py::test_pipeline_raw_inputs_and_predictions[battery]
+PASSED tests/test_models.py::test_pipeline_raw_inputs_and_predictions[data]
+PASSED tests/test_models.py::test_pipeline_raw_inputs_and_predictions[screen_time]
+PASSED tests/test_models.py::test_pipeline_serialization_parity[battery]
+PASSED tests/test_models.py::test_pipeline_serialization_parity[data]
+PASSED tests/test_models.py::test_pipeline_serialization_parity[screen_time]
+PASSED tests/test_models.py::test_predictions_deterministic_for_same_seed[battery]
+PASSED tests/test_models.py::test_predictions_deterministic_for_same_seed[data]
+PASSED tests/test_models.py::test_predictions_deterministic_for_same_seed[screen_time]
+PASSED tests/test_models.py::test_selected_model_beats_mean_baseline[battery]
+PASSED tests/test_models.py::test_selected_model_beats_mean_baseline[data]
+PASSED tests/test_models.py::test_selected_model_beats_mean_baseline[screen_time]
+PASSED tests/test_models.py::test_selected_model_matches_lowest_cv_mae[battery]
+PASSED tests/test_models.py::test_selected_model_matches_lowest_cv_mae[data]
+PASSED tests/test_models.py::test_selected_model_matches_lowest_cv_mae[screen_time]
+PASSED tests/test_no_leakage.py::test_forecast_features_exclude_forbidden_columns
+PASSED tests/test_no_leakage.py::test_task_specific_target_exclusions
+PASSED tests/test_no_leakage.py::test_assert_no_leakage_enforcement
+PASSED tests/test_no_leakage.py::test_invalid_task_mode_combinations
+PASSED tests/test_no_leakage.py::test_preprocessor_fitting_and_transformation
+PASSED tests/test_planner.py::test_grid_properties
+PASSED tests/test_planner.py::test_cost_formula_and_monotonicity
+PASSED tests/test_planner.py::test_noop_reproduces_direct_predictions
+PASSED tests/test_planner.py::test_extrapolation_bounds
+PASSED tests/test_planner.py::test_assumption_levers_isolation
+PASSED tests/test_planner.py::test_screen_follow_through
+PASSED tests/test_planner.py::test_already_within_budget
+PASSED tests/test_planner.py::test_plan_found_optimality
+PASSED tests/test_planner.py::test_not_achievable
+PASSED tests/test_planner.py::test_safety_margin
+PASSED tests/test_planner.py::test_invalid_inputs_raise_error
+PASSED tests/test_planner.py::test_determinism_and_immutability
+PASSED tests/test_planner.py::test_bounded_screen_follow_through
+PASSED tests/test_planner.py::test_allow_assumptions_false
+PASSED tests/test_planner.py::test_default_call_retains_behavior_unbound
+PASSED tests/test_risk.py::test_threshold_risk_level_boundaries
+PASSED tests/test_risk.py::test_risk_input_validation
+PASSED tests/test_risk.py::test_risk_bundle_fitted_on_train_split_only
+PASSED tests/test_risk.py::test_choose_residual_variant_logic
+PASSED tests/test_risk.py::test_overrun_probability_monotonicity_and_bounds
+PASSED tests/test_risk.py::test_probabilistic_calibration_and_clipping
+PASSED tests/test_risk.py::test_prediction_interval_containment_and_nonnegativity
+PASSED tests/test_risk.py::test_empirical_interval_coverage_on_test_split
+PASSED tests/test_risk.py::test_assess_budget_keys_and_serialization
+64 passed in 32.56s

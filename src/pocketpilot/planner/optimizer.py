@@ -21,6 +21,7 @@ def recommend(
     bounds: dict[str, Any],
     safety_margin: float = 0.0,
     top_n: int = PLANNER_TOP_N,
+    allow_assumptions: bool = True,
 ) -> dict[str, Any]:
     """
     Search and recommend minimal action-cost behavior change plans meeting user budgets.
@@ -107,7 +108,11 @@ def recommend(
         raise ValueError("; ".join(val_errors))
 
     # 4. Generate scenario grid and evaluate in batch
+    mode = "all_levers" if allow_assumptions else "learned_only"
     grid = build_scenario_grid()
+    if not allow_assumptions:
+        grid = grid[(grid["wifi_share"] == 0.0) & (~grid["power_saving"])].copy()
+
     scenarios = evaluate_scenarios(base, grid, pipelines, bounds)
     scenarios["action_cost"] = action_cost(scenarios)
 
@@ -209,17 +214,19 @@ def recommend(
 
     # 9. Human-readable explanation of assumption levers used
     assumptions_used: list[str] = []
-    if best_dict["power_saving"]:
-        assumptions_used.append("Power-saving mode reduces battery by 15 percent (assumption, not learned from data)")
-    if best_dict["wifi_share"] > 0.0:
-        pct = int(round(best_dict["wifi_share"] * 100))
-        assumptions_used.append(f"Shifting {pct} percent of mobile data to Wi-Fi is an assumption")
+    if allow_assumptions:
+        if best_dict["power_saving"]:
+            assumptions_used.append("Power-saving mode reduces battery by 15 percent (assumption, not learned from data)")
+        if best_dict["wifi_share"] > 0.0:
+            pct = int(round(best_dict["wifi_share"] * 100))
+            assumptions_used.append(f"Shifting {pct} percent of mobile data to Wi-Fi is an assumption")
 
     learned_effects_note = (
         "Cutting app time also lowers screen time through the screen-time model."
     )
 
     return {
+        "mode": mode,
         "status": status,
         "baseline": baseline_dict,
         "best": best_dict,
