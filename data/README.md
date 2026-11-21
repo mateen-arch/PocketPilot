@@ -4,7 +4,7 @@
 
 ## Dataset 1: Mobile Device Usage and User Behavior Dataset (main training source)
 
-- **Source**: https://www.kaggle.com/datasets/valakhorasani/mobile-device-usage-and-user-behavior-dataset (license: TODO, check Kaggle page)
+- **Source**: https://www.kaggle.com/datasets/valakhorasani/mobile-device-usage-and-user-behavior-dataset (license: Apache 2.0)
 - **File**: `data/raw/user_behavior_dataset.csv`, 700 rows x 11 columns, no null values, no duplicate rows.
 - **Columns**: User ID, Device Model, Operating System, App Usage Time (min/day), Screen On Time (hours/day), Battery Drain (mAh/day), Number of Apps Installed, Data Usage (MB/day), Age, Gender, User Behavior Class (1 to 5).
 - **Provenance**: The Kaggle page states the data is generated from simulated user behavior.
