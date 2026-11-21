@@ -1,0 +1,56 @@
+{
+  "title": "Mobile App Usage & Screen Time Dataset (2022-2024)",
+  "id": "hamnamunir/mobile-app-usage-screen-time",
+  "licenses": [{"name": "CC0-1.0"}],
+  "keywords": ["mobile apps", "screen time", "digital wellbeing", "smartphone usage",
+    "app analytics", "mental health", "social media addiction", "in-app purchases",
+    "notification behavior", "EDA", "classification", "regression", "synthetic data",
+    "user behavior", "mobile analytics", "sleep disruption"],
+  "collaborators": [],
+  "data": [
+    {
+      "description": "Main dataset with 10,000 synthetic mobile app usage records from 2022 to 2024. Covers 15 countries and 12 app categories with 34 features including daily screen time, session duration, app opens, data usage, battery drain, notifications, in-app purchases, app ratings, sleep disruption, mental health impact, and digital wellbeing indicators.",
+      "name": "mobile_app_usage_screen_time.csv",
+      "columns": [
+        {"name": "record_id", "description": "Unique usage record identifier in format APP0000001 to APP0010000."},
+        {"name": "year", "description": "Year of the usage record. Values: 2022, 2023, 2024."},
+        {"name": "month", "description": "Month of the record. Values: 1 (January) to 12 (December)."},
+        {"name": "quarter", "description": "Financial quarter. Values: Q1, Q2, Q3, Q4."},
+        {"name": "day_of_week", "description": "Day of the week for the usage record. Values: Monday through Sunday."},
+        {"name": "country", "description": "Country of the user. 15 countries including USA, UK, India, Pakistan, Germany, Brazil, UAE, Canada, Australia, Nigeria, Indonesia, Turkey, France, South Korea, Japan."},
+        {"name": "age_group", "description": "Age bracket of the user. Values: 13-17, 18-24, 25-34, 35-44, 45-54, 55-64, 65+."},
+        {"name": "gender", "description": "Gender of the user. Values: Male, Female, Prefer not to say."},
+        {"name": "device_brand", "description": "Smartphone brand used. Values: Samsung, Apple, Xiaomi, Oppo, Vivo, Huawei, OnePlus, Realme, Motorola, Google Pixel."},
+        {"name": "operating_system", "description": "Mobile operating system. Values: Android (72%), iOS (28%)."},
+        {"name": "network_connection", "description": "Type of internet connection during app use. Values: 5G, 4G/LTE, 3G, WiFi, Offline."},
+        {"name": "app_category", "description": "Category of the app being used. 12 categories: Social Media, Gaming, Entertainment/Streaming, Productivity, Health & Fitness, Education, Shopping, Finance/Banking, News & Media, Communication/Messaging, Travel, Food Delivery."},
+        {"name": "app_name", "description": "Name of the specific app used. 80+ apps including Instagram, TikTok, YouTube, Netflix, PUBG Mobile, WhatsApp, Duolingo, Amazon, PayPal, Google Maps and more."},
+        {"name": "subscription_type", "description": "Type of app subscription held by the user. Values: Free, Freemium, Paid Monthly, Paid Yearly, One-time Purchase."},
+        {"name": "daily_screen_time_minutes", "description": "Total daily screen time in minutes across all app sessions. Range: 5 to 600 minutes. Higher for younger age groups and Social Media/Gaming categories."},
+        {"name": "session_duration_minutes", "description": "Average duration of a single app session in minutes. Varies by category: Streaming 20-120 min, Finance 2-15 min."},
+        {"name": "sessions_per_day", "description": "Number of separate app sessions opened per day. Range: 1 to 30."},
+        {"name": "app_opens_per_day", "description": "Total number of times the app is opened per day. Range: 1 to 50."},
+        {"name": "data_used_mb_per_day", "description": "Mobile data consumed per day in megabytes. Higher for Streaming and Social Media categories. Range: up to 10,000 MB."},
+        {"name": "battery_drain_pct_per_session", "description": "Battery percentage drained per app session. Range: 2% to 35%."},
+        {"name": "notifications_received_per_day", "description": "Number of push notifications received from this app per day. Range: 0 to 200."},
+        {"name": "notification_settings", "description": "User notification preference for the app. Values: All Notifications, Selected Only, Silent/Badge Only, Completely Off."},
+        {"name": "in_app_purchase", "description": "Whether the user has made in-app purchases. Values: Yes, No. Purchase rate approximately 28%."},
+        {"name": "monthly_spend_usd", "description": "Monthly in-app spending in USD. Zero for non-purchasers. Positive for purchasers based on log-normal distribution."},
+        {"name": "app_rating_given", "description": "Star rating the user gave the app in the app store. Scale: 1 (worst) to 5 (best)."},
+        {"name": "review_submitted", "description": "Whether the user submitted a written review in the app store. Values: Yes, No."},
+        {"name": "primary_usage_time", "description": "Time of day when the user primarily uses this app. Values: Morning (6-9am), Commute (9-11am), Lunch (12-2pm), Afternoon (2-6pm), Evening (6-10pm), Late Night (10pm+)."},
+        {"name": "dark_mode_preference", "description": "User preference for dark mode display. Values: Always, Sometimes, Never."},
+        {"name": "location_permission", "description": "Location access permission granted to the app. Values: Always, While Using, Never, Not Applicable."},
+        {"name": "sleep_disruption_from_phone", "description": "Self-reported sleep disruption caused by phone/app use. Values: None, Mild, Moderate, Severe."},
+        {"name": "screen_time_concern", "description": "Whether the user is personally concerned about their screen time. Values: Yes, No, Somewhat."},
+        {"name": "mental_health_impact", "description": "Self-reported mental health impact of app usage. Values: Very Positive, Positive, Neutral, Negative, Very Negative."},
+        {"name": "digital_wellbeing_feature_used", "description": "Whether the user uses digital wellbeing or screen time management features on their device. Values: Yes, No."},
+        {"name": "app_deleted_and_reinstalled", "description": "Whether the user has previously deleted and reinstalled this app. Values: Yes, No."}
+      ]
+    },
+    {
+      "description": "Full documentation including dataset overview, column schema, use cases, research questions, methodology, citation, and author information.",
+      "name": "README.md"
+    }
+  ]
+}
